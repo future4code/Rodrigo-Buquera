@@ -1,3 +1,8 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
 h1{
     background-color: greenyellow;
     display: inline;
@@ -14,10 +19,11 @@ h2{
 a{
     background-color: indigo; 
     color:lawngreen;
-    font-weight: bolder;
-    border:10px;
-    border-color: lawngreen;
-    padding: 8px;
+    border:solid 1px;
+    border-color: black;
+    padding: 1px;
+    position: relative;
+    bottom: 0;
     }
 td{
     background-color: rgb(228, 181, 95);
@@ -37,38 +43,78 @@ li{
 }
 .estilo-formulario{
     color:mediumblue;
+    margin-bottom: 5px;
 }
 .botao{
     background-color: indigo; 
     color:lawngreen;
-    padding: 8px;
+    padding: 2px;
     font-weight: bolder;
-    border:10px;
+    border:solid 1px;
     border-color: lawngreen;
+}
+.botao:hover{
+    background-color: white;
+    color: black;
+    cursor: pointer;
+
 }
 .teste-display{
     display: inline; 
     }
 body{
     background-color: rgb(160, 140, 170);
-    height: 80vh;
+    height: 100vh;
     text-align: center;
     }
-.container{
-    height: 100%;
-}
+
 .redes-sociais{
     margin-top: 10px;
 }
 .tabela{
-    width: 100%;
-    table-layout: fixed;
-   }
+    width: 500px;
+    margin: auto
+}
 input{
     float: right;
 }
 form{
     width: 450px;
     margin: auto;
+    position: relative;
+}
+.footer{
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    background-color: purple;
+        }
+.header{
+    width: 100%;
+    position: fixed;
+    top: 0;
+    background-color: purple;
+    height: 120px;
 }
 
+.main{
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    top 120px 
+}
+
+.container{
+    height: 200vh;
+    position: relative;
+}
+
+.subir-texto{
+    position: relative;
+    top: 0;
+}
+.inicial{
+    position: absolute;
+    top: 200px
+    
+}
