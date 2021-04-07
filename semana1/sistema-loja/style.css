@@ -1,0 +1,74 @@
+h1{
+    background-color: greenyellow;
+    display: inline;
+}
+h2{
+    background-color: lawngreen;
+    margin: 1px;
+    display: inline;
+}
+.icones{
+    width: 50px;
+    margin: 10px;
+    }
+a{
+    background-color: indigo; 
+    color:lawngreen;
+    font-weight: bolder;
+    border:10px;
+    border-color: lawngreen;
+    padding: 8px;
+    }
+td{
+    background-color: rgb(228, 181, 95);
+    border: 3px solid black;  
+}
+th{
+    background-color: rgb(228, 181, 95);
+    border: 3px solid black;
+}
+li{
+    color: rgb(37, 50, 124);
+    line-height: 50px;
+    list-style-position: inside;
+}
+.figuras{
+    width: 100px;
+}
+.estilo-formulario{
+    color:mediumblue;
+}
+.botao{
+    background-color: indigo; 
+    color:lawngreen;
+    padding: 8px;
+    font-weight: bolder;
+    border:10px;
+    border-color: lawngreen;
+}
+.teste-display{
+    display: inline; 
+    }
+body{
+    background-color: rgb(160, 140, 170);
+    height: 80vh;
+    text-align: center;
+    }
+.container{
+    height: 100%;
+}
+.redes-sociais{
+    margin-top: 10px;
+}
+.tabela{
+    width: 100%;
+    table-layout: fixed;
+   }
+input{
+    float: right;
+}
+form{
+    width: 450px;
+    margin: auto;
+}
+
