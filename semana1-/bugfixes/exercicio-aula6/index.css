@@ -33,6 +33,7 @@ img {
 
 div>p:first-child {
     display: inline;
+    
 }
 
 div img {
@@ -69,6 +70,10 @@ button:active{
 .icone {
     height: 15px;
     width: 15px;
+}
+
+.icone:hover{
+    cursor: pointer;
 }
 
 
