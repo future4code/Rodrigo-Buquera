@@ -46,6 +46,15 @@ div img {
     color: white;
 }
 
+button:hover{
+    background-color: #c44f00;
+}
+
+button:active{
+    color: green;
+}
+
+
 .botao-amarelo:hover {
     background-color: #c44f00;
 }
@@ -117,6 +126,8 @@ td button {
     border-radius: 5px;
     color: black;
 }
+
+
 
 .container-do-search {
     margin-top: 20px;
