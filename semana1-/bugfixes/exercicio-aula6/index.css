@@ -32,7 +32,11 @@ img {
 }
 
 div>p:first-child {
-    display: inline;
+
+    /** 
+  *display: inline;
+    **/
+   
     
 }
 
@@ -87,15 +91,23 @@ button:active{
     background-color: #2274a5;
     color: white;
     font-family: sans-serif;
-   
+    
+    
 }
 #container-de-descricao>p {
     width: 300px;
+    margin: auto;
+    position: absolute;
+    top: 100px;
 }
 
+#caixa-texto{
+    padding-top: 100px;
+}
 
-#container-de-descricao>ol {
-    padding: 15px 0px;
+#caixa-texto>ol{
+    padding: 0px 450px;
+    
 }
 
 #container-para-comprar {
@@ -125,6 +137,7 @@ table {
     width: 60%;
     margin: auto;
     font-family: arial;
+    text-align: center;
   
 }
 
