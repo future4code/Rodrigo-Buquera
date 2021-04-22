@@ -333,7 +333,7 @@ if (tipoJogo !== "IN" && tipoJogo !== "DO") {
     //  QUANTIDADE E MOEDA
 
     if (tipoJogo === "IN") {
-        valorIngresso = valorIngresso * 4.1
+        valorIngresso = valorIngresso / 4.1
     }
     valorTotal = valorIngresso * quantidadeIngresso
 
