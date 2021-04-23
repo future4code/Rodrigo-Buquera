@@ -468,7 +468,7 @@
 
 let contagem = 1
 let numero = Number(prompt("vamos jogar"))
-let numeroAleatorio = Math.floor(Math.random() * 100) + 1
+let numeroAleatorio = Math.floor((Math.random() * 100) + 1);
 
 while (numero !== numeroAleatorio) {
     console.log(`O numero chutado foi ${numero}`)
