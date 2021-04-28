@@ -44,3 +44,21 @@ button {
     margin: 10px;
     border-top: 3px double rgb(77, 77, 77);
 }
+
+img {
+    max-width: 10vw;
+    max-height: 10vh;
+}
+
+@media screen and (max-width: 720px) {
+
+    #container-de-posts {
+      width: 90vw;  
+    }
+
+    #container-de-posts div {
+        width: 90vw;  
+      }
+    
+}
+
