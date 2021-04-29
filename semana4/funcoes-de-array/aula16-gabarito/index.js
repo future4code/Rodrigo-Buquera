@@ -87,26 +87,44 @@ function adicionarDespesa() {
 
 // TERCEIRO
 function filtrarDespesas() {
+
+
+
     let tipoFiltro = document.getElementById('tipoFiltro').value
     let valorMin = Number(document.getElementById('valorFiltroMin').value)
     let valorMax = Number(document.getElementById('valorFiltroMax').value)
 
     // AQUI NESSA VARIÁVEL VEM A IMPLEMENTAÇÃO
 
-    // if ( valorMin ===""){
-    //     valorMin = 0
-    // }
-    // if (valorMax ===""){
-    //     valorMax = Infinity
-    // }
-    // NÃO DEU CERTO
+    if (tipoFiltro === "" || valorMin === 0 || valorMax === 0) {
+        alert("preencher todos os campos do filtro")
+    }
+    if (valorMax <= valorMin) {
+        alert("valor máximo não pode ser igual o menor que valor mínimo")
+    }
+    if (valorMin < 0 || valorMax <0){
+        alert("não entre com valores negativos")
+    }
+
 
     let despesasFiltradas = arrDespesas.filter((itemFiltrado) => {
-        if (itemFiltrado.valor >= valorMin && itemFiltrado.valor <= valorMax && itemFiltrado.tipo === tipoFiltro) {          
-            return true
-        }
+
+
+        // if (itemFiltrado.valor >= valorMin && itemFiltrado.valor <= valorMax && itemFiltrado.tipo === tipoFiltro) {
+        //     return true
+        // }  
+        //   ESTA FUNCINANDO
+
+        if (itemFiltrado.tipo === tipoFiltro || tipoFiltro ==="todos" ) {
+            if (itemFiltrado.valor >= valorMin && itemFiltrado.valor <= valorMax){
+                return true
+            }
+            
+         } 
+   
+   
     })
-    
+
     imprimirDespesas(despesasFiltradas)
 }
 
