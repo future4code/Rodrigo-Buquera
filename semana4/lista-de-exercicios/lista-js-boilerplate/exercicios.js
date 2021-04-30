@@ -316,14 +316,13 @@ function ordenaPorData() {
 const dataHoje = new Date(2021, 3, 30).getTime()
 
 consultasData.forEach((valor) =>{
-   valor.dataDaConsulta = new Date(valor.dataDaConsulta).getTime() - dataHoje
-   
-   
+   valor.timestamp = new Date(valor.dataDaConsulta).getTime() - dataHoje
 })
 
-const consultasOrdenadasDatas = consultasData.sort((a,b ) =>  a.dataDaConsulta - b.dataDaConsulta)
+const consultasOrdenadasDatas = consultasData.sort((a,b ) =>  a.timestamp - b.timestamp)
 
-// precisa agora voltar a data ao formato anterior
+delete consultasOrdenadasDatas.timestamp 
+
 console.log(consultasOrdenadasDatas)
 return consultasOrdenadasDatas
 
