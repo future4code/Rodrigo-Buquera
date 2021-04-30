@@ -117,7 +117,31 @@ function comparaDoisNumeros(num1, num2) {
 // Exercício 10
 
 function segundoMaiorEMenor(array) {
-   // implemente sua lógica aqui
+   let primeiroMaior = 0
+   let segundoMaior = 0
+   let primeiroMenor =0
+   let segundoMenor =0
+   let novoArray =[]
+   
+   novoArray = array.forEach((elemento) => {
+      if (elemento>primeiroMaior){
+         primeiroMaior = elemento
+          if ( segundoMaior > elemento && segundoMaior <primeiroMaior)
+            segundoMaior = elemento
+                    
+      } else{
+         primeiroMenor = elemento
+         if ( segundoMenor < elemento && segundoMenor>primeiroMenor)
+         segundoMenor = elemento
+      }
+
+      novoArray.push(segundoMaior)
+      novoArray.push(segundoMenor)
+
+   })
+console.log(novoArray)
+return novoArray
+
 }
 
 //Exercício 11
@@ -129,7 +153,13 @@ function ordenaArray(array) {
 // Exercício 12
 
 function filmeFavorito() {
-   // implemente sua lógica aqui
+   filmeAstrodev ={
+      nome: "O Diabo Veste Prada", 
+      ano: 2006,
+      diretor: "David Frankel",
+      atores: ["Meryl Streep", "Anne Hathaway", "Emily Blunt", "Stanley Tucci"]
+   }
+  return filmeAstrodev
 }
 
 // Exercício 13
