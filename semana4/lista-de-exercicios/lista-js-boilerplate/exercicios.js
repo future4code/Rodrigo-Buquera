@@ -72,8 +72,12 @@ function retornaExpressoesBooleanas() {
 //Exercício 7
 
 function retornaNNumerosPares(n) {
-
-
+ let arrayNumerosPares =[]
+   for ( let i =0; i<n;i++){
+      numero = 2*(i)
+      arrayNumerosPares.push(numero)
+   } 
+   return arrayNumerosPares
 }
 
 // Exercício 8
@@ -293,23 +297,35 @@ const consultasNome = [
 //Exercício 19, letra A
 
 function ordenaPorNome() {
-   let consultasOrdenadas = []
-
-   consultasOrdenadas = consultasNome.sort()
-
+   
+  return consultasNome.sort((a, b) => a.nome - b.nome)
 
 }
 
 // Exercício 19, letra B
 
 const consultasData = [
-   { nome: "João", dataDaConsulta: "01/10/2021" },
-   { nome: "Pedro", dataDaConsulta: "02/07/2021" },
-   { nome: "Paula", dataDaConsulta: "03/11/2021" },
-   { nome: "Márcia", dataDaConsulta: "04/05/2021" }
+   { nome: "João", dataDaConsulta: "2021-10-01" },
+   { nome: "Pedro", dataDaConsulta: "2021-07-02" },
+   { nome: "Paula", dataDaConsulta: "2021-11-03" },
+   { nome: "Márcia", dataDaConsulta: "2021-05-04" }
 ]
 
 function ordenaPorData() {
+
+const dataHoje = new Date(2021, 3, 30).getTime()
+
+consultasData.forEach((valor) =>{
+   valor.dataDaConsulta = new Date(valor.dataDaConsulta).getTime() - dataHoje
+   
+   
+})
+
+const consultasOrdenadasDatas = consultasData.sort((a,b ) =>  a.dataDaConsulta - b.dataDaConsulta)
+
+// precisa agora voltar a data ao formato anterior
+console.log(consultasOrdenadasDatas)
+return consultasOrdenadasDatas
 
 }
 
