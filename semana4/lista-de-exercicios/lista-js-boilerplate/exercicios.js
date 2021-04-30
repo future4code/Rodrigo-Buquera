@@ -117,42 +117,19 @@ function comparaDoisNumeros(num1, num2) {
 // Exercício 10
 
 function segundoMaiorEMenor(array) {
-   // let primeiroMaior = 0
-   // let segundoMaior = 0
-   // let primeiroMenor = 0
-   // let segundoMenor = 0
-   // let novoArray = []
-  
-   let n = array.sort((a,b) => a-b)   
+   let arrayDeSegundos = []
+   let arrayInter = array.sort((a, b) => a - b)
 
-console.log(n)
+   arrayDeSegundos.push(arrayInter[arrayInter.length - 2])
+   arrayDeSegundos.push(arrayInter[1])
 
-
-   // novoArray = array.forEach((elemento) => {
-   //    if (elemento > primeiroMaior) {
-   //       primeiroMaior = elemento
-   //       if (segundoMaior > elemento && segundoMaior < primeiroMaior)
-   //          segundoMaior = elemento
-
-   //    } else {
-   //       primeiroMenor = elemento
-   //       if (segundoMenor < elemento && segundoMenor > primeiroMenor)
-   //          segundoMenor = elemento
-   //    }
-
-   //    novoArray.push(segundoMaior)
-   //    novoArray.push(segundoMenor)
-
-   // })
-   
-   // return novoArray
-
+   return arrayDeSegundos
 }
 
 //Exercício 11
 
 function ordenaArray(array) {
-   let arrayCrescente = array.sort((a,b) => a-b)  
+   let arrayCrescente = array.sort((a, b) => a - b)
    return arrayCrescente
 }
 
@@ -254,20 +231,20 @@ function multiplicaArrayPor2S(array) {
 
    });
    return arrayX2String
-// está com um erro no enunciado. Ao invés de 3 o teste está por 2.
+   // está com um erro no enunciado. Ao invés de 3 o teste está por 2.
 }
 
 // Exercício 17, letra C
 
 function verificaParidade(array) {
-   const arrayEParidade =[]
+   const arrayEParidade = []
 
    array.forEach((element) => {
-      if (element%2===0) {
+      if (element % 2 === 0) {
          arrayEParidade.push(`${element} é par`)
       } else {
          arrayEParidade.push(`${element} é ímpar`)
-      }      
+      }
    })
    return arrayEParidade
 }
@@ -286,22 +263,22 @@ const pessoas = [
 //Exercício 18, letra A
 
 function retornaPessoasAutorizadas() {
-  const pessoasAutorizadas =  pessoas.filter((pessoas) =>{
-      if (pessoas.altura>1.5 && pessoas.idade>14 && pessoas.idade<60)
-      return true
-  })
-  return pessoasAutorizadas
+   const pessoasAutorizadas = pessoas.filter((pessoas) => {
+      if (pessoas.altura > 1.5 && pessoas.idade > 14 && pessoas.idade < 60)
+         return true
+   })
+   return pessoasAutorizadas
 }
 
 
 // Exercício 18, letra B
 
 function retornaPessoasNaoAutorizadas() {
-   const pessoasNaoAutorizadas =  pessoas.filter((pessoas) =>{
-      if (pessoas.altura<1.5 || pessoas.idade<14 || pessoas.idade>60)
-      return true
-  })
-  return pessoasNaoAutorizadas
+   const pessoasNaoAutorizadas = pessoas.filter((pessoas) => {
+      if (pessoas.altura < 1.5 || pessoas.idade < 14 || pessoas.idade > 60)
+         return true
+   })
+   return pessoasNaoAutorizadas
 }
 
 //Exercício 19
@@ -316,10 +293,10 @@ const consultasNome = [
 //Exercício 19, letra A
 
 function ordenaPorNome() {
-   let consultasOrdenadas =[]
+   let consultasOrdenadas = []
 
    consultasOrdenadas = consultasNome.sort()
-   console.log(consultasOrdenadas)
+
 
 }
 
@@ -349,11 +326,11 @@ const contas = [
 
 function atualizaSaldo() {
    contas.forEach((clientes) => {
-         gastosCliente = 0
-         clientes.compras.forEach((valor) => {
-          gastosCliente = gastosCliente + valor  
-         })
-      clientes.saldoTotal -= gastosCliente      
+      gastosCliente = 0
+      clientes.compras.forEach((valor) => {
+         gastosCliente = gastosCliente + valor
+      })
+      clientes.saldoTotal -= gastosCliente
    })
    return contas
 }
