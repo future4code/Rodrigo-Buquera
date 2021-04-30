@@ -117,37 +117,43 @@ function comparaDoisNumeros(num1, num2) {
 // Exercício 10
 
 function segundoMaiorEMenor(array) {
-   let primeiroMaior = 0
-   let segundoMaior = 0
-   let primeiroMenor = 0
-   let segundoMenor = 0
-   let novoArray = []
+   // let primeiroMaior = 0
+   // let segundoMaior = 0
+   // let primeiroMenor = 0
+   // let segundoMenor = 0
+   // let novoArray = []
+  
+   let n = array.sort((a,b) => a-b)   
 
-   novoArray = array.forEach((elemento) => {
-      if (elemento > primeiroMaior) {
-         primeiroMaior = elemento
-         if (segundoMaior > elemento && segundoMaior < primeiroMaior)
-            segundoMaior = elemento
+console.log(n)
 
-      } else {
-         primeiroMenor = elemento
-         if (segundoMenor < elemento && segundoMenor > primeiroMenor)
-            segundoMenor = elemento
-      }
 
-      novoArray.push(segundoMaior)
-      novoArray.push(segundoMenor)
+   // novoArray = array.forEach((elemento) => {
+   //    if (elemento > primeiroMaior) {
+   //       primeiroMaior = elemento
+   //       if (segundoMaior > elemento && segundoMaior < primeiroMaior)
+   //          segundoMaior = elemento
 
-   })
-   console.log(novoArray)
-   return novoArray
+   //    } else {
+   //       primeiroMenor = elemento
+   //       if (segundoMenor < elemento && segundoMenor > primeiroMenor)
+   //          segundoMenor = elemento
+   //    }
+
+   //    novoArray.push(segundoMaior)
+   //    novoArray.push(segundoMenor)
+
+   // })
+   
+   // return novoArray
 
 }
 
 //Exercício 11
 
 function ordenaArray(array) {
-   // implemente sua lógica aqui
+   let arrayCrescente = array.sort((a,b) => a-b)  
+   return arrayCrescente
 }
 
 // Exercício 12
@@ -310,6 +316,10 @@ const consultasNome = [
 //Exercício 19, letra A
 
 function ordenaPorNome() {
+   let consultasOrdenadas =[]
+
+   consultasOrdenadas = consultasNome.sort()
+   console.log(consultasOrdenadas)
 
 }
 
