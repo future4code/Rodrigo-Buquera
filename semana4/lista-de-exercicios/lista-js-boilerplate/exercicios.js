@@ -280,14 +280,22 @@ const pessoas = [
 //Exercício 18, letra A
 
 function retornaPessoasAutorizadas() {
-   // implemente sua lógica aqui
+  const pessoasAutorizadas =  pessoas.filter((pessoas) =>{
+      if (pessoas.altura>1.5 && pessoas.idade>14 && pessoas.idade<60)
+      return true
+  })
+  return pessoasAutorizadas
 }
 
 
 // Exercício 18, letra B
 
 function retornaPessoasNaoAutorizadas() {
-   // implemente sua lógica aqui
+   const pessoasNaoAutorizadas =  pessoas.filter((pessoas) =>{
+      if (pessoas.altura<1.5 || pessoas.idade<14 || pessoas.idade>60)
+      return true
+  })
+  return pessoasNaoAutorizadas
 }
 
 //Exercício 19
@@ -330,5 +338,12 @@ const contas = [
 ]
 
 function atualizaSaldo() {
-   // implemente sua lógica aqui
+   contas.forEach((clientes) => {
+         gastosCliente = 0
+         clientes.compras.forEach((valor) => {
+          gastosCliente = gastosCliente + valor  
+         })
+      clientes.saldoTotal -= gastosCliente      
+   })
+   return contas
 }
