@@ -72,13 +72,21 @@ function retornaExpressoesBooleanas() {
 //Exercício 7
 
 function retornaNNumerosPares(n) {
-   // implemente sua lógica aqui
+   
+
 }
 
 // Exercício 8
 
 function checaTriangulo(a, b, c) {
-   // implemente sua lógica aqui
+   if (a === b && b ===c){
+      return "Equilátero"
+   }
+   if (a!==b && b!==c){
+      return "Escaleno"
+   }
+   if ((a===b && b!==c) || (a===b && b!==c))
+      return "Isósceles"
 }
 
 // Exercício 9
