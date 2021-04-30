@@ -15,10 +15,10 @@ function retornaNumerosParesElevadosADois(array) {
    const arrayParesElevados = []
    array.forEach((element) => {
       if (element % 2 === 0) {
-         arrayParesElevados.push(element*element)
+         arrayParesElevados.push(element * element)
       }
    })
-    return arrayParesElevados   
+   return arrayParesElevados
 }
 
 //Exercício 3
@@ -26,9 +26,9 @@ function retornaNumerosParesElevadosADois(array) {
 function retornaNumerosPares(array) {
    const arrayPares = array.filter((element) => {
       if (element % 2 === 0) {
-         return true 
+         return true
       }
-   }) 
+   })
    return arrayPares
 }
 
@@ -36,13 +36,13 @@ function retornaNumerosPares(array) {
 
 function retornaMaiorNumero(array) {
    let maiorNum = 0
-   array.forEach((num) =>{
-      if (num>maiorNum){
+   array.forEach((num) => {
+      if (num > maiorNum) {
          maiorNum = num
       }
    })
-   return maiorNum      
-   }
+   return maiorNum
+}
 
 //Exercício 5
 
@@ -53,7 +53,20 @@ function retornaQuantidadeElementos(array) {
 //Exercício 6
 
 function retornaExpressoesBooleanas() {
-   // implemente sua lógica aqui
+   const booleano1 = true
+   const booleano2 = false
+   const booleano3 = !booleano2
+   const booleano4 = !booleano3
+
+   const arrayBooleano = []
+
+   arrayBooleano.push(booleano1 && booleano2 && !booleano4)
+   arrayBooleano.push((booleano1 && booleano2) || !booleano3)
+   arrayBooleano.push((booleano2 || booleano3) && (booleano4 || booleano1))
+   arrayBooleano.push(!(booleano2 && booleano3) || !(booleano1 && booleano3))
+   arrayBooleano.push(!(booleano1) && !(booleano3) || (!booleano4 && booleano3 && booleano3))
+
+   return arrayBooleano
 }
 
 //Exercício 7
