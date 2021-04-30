@@ -191,7 +191,8 @@ function criaRetangulo(lado1, lado2) {
 // Exercício 15
 
 function anonimizaPessoa(pessoa) {
-   // implemente sua lógica aqui
+   pessoa.nome ="ANÔNIMO"
+   return pessoa
 }
 
 // Exercício 16
@@ -206,13 +207,23 @@ const arrayDePessoas = [
 // Exercício 16, letra A
 
 function maioresDe18(arrayDePessoas) {
-   // implemente sua lógica aqui
+   const arrayMaiores18 = arrayDePessoas.filter((element) => {
+      if (element.idade>=20){
+         return true
+      }
+   })
+   return arrayMaiores18
 }
 
 // Exercício 16, letra B
 
 function menoresDe18(arrayDePessoas) {
-   // implemente sua lógica aqui
+   const arrayMenores18 = arrayDePessoas.filter((element) => {
+      if (element.idade<20){
+         return true
+      }
+   })
+   return arrayMenores18
 }
 
 // Exercício 17, letra A
