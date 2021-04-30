@@ -72,20 +72,20 @@ function retornaExpressoesBooleanas() {
 //Exercício 7
 
 function retornaNNumerosPares(n) {
-   
+
 
 }
 
 // Exercício 8
 
 function checaTriangulo(a, b, c) {
-   if (a === b && b ===c){
+   if (a === b && b === c) {
       return "Equilátero"
    }
-   if (a!==b && b!==c){
+   if (a !== b && b !== c) {
       return "Escaleno"
    }
-   if ((a===b && b!==c) || (a===b && b!==c))
+   if ((a === b && b !== c) || (a === b && b !== c))
       return "Isósceles"
 }
 
@@ -94,24 +94,24 @@ function checaTriangulo(a, b, c) {
 function comparaDoisNumeros(num1, num2) {
    const objeto = {
       maiorNumero: 0,
-      maiorDivisivelporMenor:0,
+      maiorDivisivelporMenor: 0,
       diferenca: 0
-   } 
-
-   if (num1>num2){
-      objeto.maiorNumero = num1
-      objeto.diferenca = num1-num2
-   } else {
-      objeto.maiorNumero = num2
-      objeto.diferenca = num2-num1
    }
 
-   if (num1%num2===0) {
-      objeto.maiorDivisivelporMenor = false  
+   if (num1 > num2) {
+      objeto.maiorNumero = num1
+      objeto.diferenca = num1 - num2
+   } else {
+      objeto.maiorNumero = num2
+      objeto.diferenca = num2 - num1
+   }
+
+   if (num1 % num2 === 0) {
+      objeto.maiorDivisivelporMenor = false
    } else {
       objeto.maiorDivisivelporMenor = true
    }
-  return objeto
+   return objeto
 }
 
 // Exercício 10
@@ -119,28 +119,28 @@ function comparaDoisNumeros(num1, num2) {
 function segundoMaiorEMenor(array) {
    let primeiroMaior = 0
    let segundoMaior = 0
-   let primeiroMenor =0
-   let segundoMenor =0
-   let novoArray =[]
-   
+   let primeiroMenor = 0
+   let segundoMenor = 0
+   let novoArray = []
+
    novoArray = array.forEach((elemento) => {
-      if (elemento>primeiroMaior){
+      if (elemento > primeiroMaior) {
          primeiroMaior = elemento
-          if ( segundoMaior > elemento && segundoMaior <primeiroMaior)
+         if (segundoMaior > elemento && segundoMaior < primeiroMaior)
             segundoMaior = elemento
-                    
-      } else{
+
+      } else {
          primeiroMenor = elemento
-         if ( segundoMenor < elemento && segundoMenor>primeiroMenor)
-         segundoMenor = elemento
+         if (segundoMenor < elemento && segundoMenor > primeiroMenor)
+            segundoMenor = elemento
       }
 
       novoArray.push(segundoMaior)
       novoArray.push(segundoMenor)
 
    })
-console.log(novoArray)
-return novoArray
+   console.log(novoArray)
+   return novoArray
 
 }
 
@@ -153,25 +153,25 @@ function ordenaArray(array) {
 // Exercício 12
 
 function filmeFavorito() {
-   filmeAstrodev ={
-      nome: "O Diabo Veste Prada", 
+   filmeAstrodev = {
+      nome: "O Diabo Veste Prada",
       ano: 2006,
       diretor: "David Frankel",
       atores: ["Meryl Streep", "Anne Hathaway", "Emily Blunt", "Stanley Tucci"]
    }
-  return filmeAstrodev
+   return filmeAstrodev
 }
 
 // Exercício 13
 
 function imprimeChamada() {
-   filmeAstrodev ={
-      nome: "O Diabo Veste Prada", 
+   filmeAstrodev = {
+      nome: "O Diabo Veste Prada",
       ano: 2006,
       diretor: "David Frankel",
       atores: ["Meryl Streep", " Anne Hathaway", " Emily Blunt", " Stanley Tucci"]
    }
-   
+
    return `Venha assistir ao filme ${filmeAstrodev.nome}, de ${filmeAstrodev.ano}, dirigido por ${filmeAstrodev.diretor} e estrelado por ${filmeAstrodev.atores}.`
 
 }
@@ -182,16 +182,16 @@ function criaRetangulo(lado1, lado2) {
    retangulo = {
       largura: lado1,
       altura: lado2,
-      perimetro: 2*(lado2+lado1),
-      area: lado1*lado2
-   } 
+      perimetro: 2 * (lado2 + lado1),
+      area: lado1 * lado2
+   }
    return retangulo
 }
 
 // Exercício 15
 
 function anonimizaPessoa(pessoa) {
-   pessoa.nome ="ANÔNIMO"
+   pessoa.nome = "ANÔNIMO"
    return pessoa
 }
 
@@ -208,7 +208,7 @@ const arrayDePessoas = [
 
 function maioresDe18(arrayDePessoas) {
    const arrayMaiores18 = arrayDePessoas.filter((element) => {
-      if (element.idade>=20){
+      if (element.idade >= 20) {
          return true
       }
    })
@@ -219,7 +219,7 @@ function maioresDe18(arrayDePessoas) {
 
 function menoresDe18(arrayDePessoas) {
    const arrayMenores18 = arrayDePessoas.filter((element) => {
-      if (element.idade<20){
+      if (element.idade < 20) {
          return true
       }
    })
@@ -229,19 +229,41 @@ function menoresDe18(arrayDePessoas) {
 // Exercício 17, letra A
 
 function multiplicaArrayPor2(array) {
-   // implemente sua lógica aqui
+   const arrayX2 = []
+
+   array.forEach((element) => {
+      arrayX2.push(element * 2)
+
+   });
+   return arrayX2
 }
 
 // Exercício 17, letra B
 
 function multiplicaArrayPor2S(array) {
-   // implemente sua lógica aqui
+   const arrayX2String = []
+
+   array.forEach((element) => {
+      arrayX2String.push(String(element * 2))
+
+   });
+   return arrayX2String
+// está com um erro no enunciado. Ao invés de 3 o teste está por 2.
 }
 
 // Exercício 17, letra C
 
 function verificaParidade(array) {
-   // implemente sua lógica aqui
+   const arrayEParidade =[]
+
+   array.forEach((element) => {
+      if (element%2===0) {
+         arrayEParidade.push(`${element} é par`)
+      } else {
+         arrayEParidade.push(`${element} é ímpar`)
+      }      
+   })
+   return arrayEParidade
 }
 
 // Exercício 18
