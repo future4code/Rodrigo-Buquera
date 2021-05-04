@@ -8,7 +8,7 @@ const ContainerCardPequeno = styled.div`
     padding: 20px 10px;
     margin-bottom: 10px;
     height: 100px;
-    width: 500px;
+    
 
     img {
     width: 50px;
