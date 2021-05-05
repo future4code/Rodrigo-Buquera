@@ -7,6 +7,7 @@ import iconeCoracaoBranco from '../../img/favorite-white.svg'
 import iconeCoracaoPreto from '../../img/favorite.svg'
 import iconeComentario from '../../img/comment_icon.svg'
 import { SecaoComentario } from '../SecaoComentario/SecaoComentario'
+import {SecaoCompartilhado} from '../SecaoCompartilhado/SecaoCompartilhado'
 
 const PostContainer = styled.div`
   border: 1px solid gray;
@@ -46,7 +47,8 @@ class Post extends React.Component {
     numeroCurtidas: 0,
     comentando: false,
     numeroComentarios: 0,
-    salvo: false
+    salvo: false,
+    compartilhado: false
   }
 
   onClickCurtida = () => {
@@ -58,9 +60,9 @@ class Post extends React.Component {
       this.setState({
         numeroCurtidas: this.state.numeroCurtidas - 1
       })
-    } else{
+    } else {
       this.setState({
-        numeroCurtidas: this.state.numeroCurtidas +1 
+        numeroCurtidas: this.state.numeroCurtidas + 1
       })
     }
   }
@@ -84,6 +86,13 @@ class Post extends React.Component {
     })
   }
 
+  onClickCompartilha = () => {
+    this.setState({
+      compartilhado: !this.state.compartilhado
+    })
+
+  }
+
   render() {
     let iconeCurtida
     let iconeSalvo
@@ -94,7 +103,7 @@ class Post extends React.Component {
       iconeCurtida = iconeCoracaoBranco
     }
 
-    if (this.state.salvo){
+    if (this.state.salvo) {
       iconeSalvo = "https://upload.wikimedia.org/wikipedia/commons/0/03/Green_check.svg"
     } else {
       iconeSalvo = "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Check_mark_23x20_02.svg/1081px-Check_mark_23x20_02.svg.png"
@@ -102,9 +111,14 @@ class Post extends React.Component {
 
 
     let componenteComentario
+    let componenteCompartilhado
 
     if (this.state.comentando) {
       componenteComentario = <SecaoComentario aoEnviar={this.aoEnviarComentario} />
+    }
+
+    if(this.state.compartilhado){
+      componenteCompartilhado = <SecaoCompartilhado/>
     }
 
     return <PostContainer>
@@ -123,9 +137,15 @@ class Post extends React.Component {
         />
 
         <IconeComContador
-        icone={iconeSalvo}
-        onClickIcone={this.onClickSalva}
-        valorContador= ""
+          icone={iconeSalvo}
+          onClickIcone={this.onClickSalva}
+          valorContador=""
+        />
+
+        <IconeComContador
+          icone={"https://pic.onlinewebfonts.com/svg/img_373601.png"}
+          onClickIcone={this.onClickCompartilha}
+          valorContador=""
         />
 
         <IconeComContador
@@ -135,6 +155,7 @@ class Post extends React.Component {
         />
       </PostFooter>
       {componenteComentario}
+      {componenteCompartilhado}
     </PostContainer>
   }
 }
