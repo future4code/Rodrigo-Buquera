@@ -45,7 +45,8 @@ class Post extends React.Component {
     curtido: false,
     numeroCurtidas: 0,
     comentando: false,
-    numeroComentarios: 0
+    numeroComentarios: 0,
+    salvo: false
   }
 
   onClickCurtida = () => {
@@ -77,14 +78,28 @@ class Post extends React.Component {
     })
   }
 
+  onClickSalva = () => {
+    this.setState({
+      salvo: !this.state.salvo
+    })
+  }
+
   render() {
     let iconeCurtida
+    let iconeSalvo
 
     if (this.state.curtido) {
       iconeCurtida = iconeCoracaoPreto
     } else {
       iconeCurtida = iconeCoracaoBranco
     }
+
+    if (this.state.salvo){
+      iconeSalvo = "https://upload.wikimedia.org/wikipedia/commons/0/03/Green_check.svg"
+    } else {
+      iconeSalvo = "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Check_mark_23x20_02.svg/1081px-Check_mark_23x20_02.svg.png"
+    }
+
 
     let componenteComentario
 
@@ -105,6 +120,12 @@ class Post extends React.Component {
           icone={iconeCurtida}
           onClickIcone={this.onClickCurtida}
           valorContador={this.state.numeroCurtidas}
+        />
+
+        <IconeComContador
+        icone={iconeSalvo}
+        onClickIcone={this.onClickSalva}
+        valorContador= ""
         />
 
         <IconeComContador
