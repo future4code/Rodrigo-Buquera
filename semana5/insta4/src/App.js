@@ -72,7 +72,14 @@ onChangeImagem = (event) => {
 }
 
 handleComments = () => {
-  this.setState({posts: [...this.state.posts, this.state.newPost]})
+  this.setState({
+    posts: [...this.state.posts, this.state.newPost],
+    newPost: {
+      nome: '',
+      fotoUser:  '',
+      imagem: ''
+    } 
+  })
 }
 
   render() {
