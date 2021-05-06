@@ -67,7 +67,8 @@ onChangeFoto = (event) => {
 
 onChangeImagem = (event) => {
   // this.setState({imagem: event.target.value})
-  this.setState({newPost: {...this.state.newPost, imagem: event.target.value}})
+  this.setState({newPost: {...this.state.newPost, imagem: event.target.value}
+  })
 }
 
 handleComments = () => {
@@ -77,7 +78,7 @@ handleComments = () => {
   render() {
     const postsList = this.state.posts.map((post) => {
       return (
-        <Post
+        <Post key={post.nome}
         nomeUsuario={post.nome} 
         fotoUsuario={post.fotoUser}
         fotoPost={post.imagem}
