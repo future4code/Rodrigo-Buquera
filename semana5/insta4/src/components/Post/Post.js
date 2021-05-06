@@ -41,6 +41,7 @@ const PostPhoto = styled.img`
   width: 100%;
 `
 
+
 class Post extends React.Component {
   state = {
     curtido: false,
@@ -50,6 +51,7 @@ class Post extends React.Component {
     salvo: false,
     compartilhado: false
   }
+  
 
   onClickCurtida = () => {
     this.setState({
@@ -131,7 +133,7 @@ class Post extends React.Component {
 
       <PostFooter>
         <IconeComContador
-          icone={iconeCurtida}
+          icone={iconeCurtida} n  
           onClickIcone={this.onClickCurtida}
           valorContador={this.state.numeroCurtidas}
         />
