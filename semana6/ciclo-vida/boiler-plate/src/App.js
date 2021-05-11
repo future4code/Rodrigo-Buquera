@@ -76,6 +76,13 @@ class App extends React.Component {
     this.setState({filtro: event.target.value})
   }
 
+  apagaTarefa = (id) =>{
+    const novaListaTarefas = this.state.tarefas.filter((tarefa) =>{
+      return id !== tarefa.id
+    })
+    this.setState({tarefas: novaListaTarefas})
+  }
+
   render() {
     const listaFiltrada = this.state.tarefas.filter(tarefa => {
       switch (this.state.filtro) {
@@ -111,6 +118,7 @@ class App extends React.Component {
               <Tarefa
                 completa={tarefa.completa}
                 onClick={() => this.selectTarefa(tarefa.id)}
+                onDoubleClick={() => this.apagaTarefa(tarefa.id)}
               >
                 {tarefa.texto}
               </Tarefa>
