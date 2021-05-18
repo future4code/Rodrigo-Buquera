@@ -12,7 +12,6 @@ align-items: center;
 
 ` 
 
-
 export default class App extends React.Component {
   state = {
     page: true,

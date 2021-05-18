@@ -2,7 +2,6 @@ import axios from "axios";
 import React from "react";
 import styled from "styled-components";
 
-
 const ListaContainer = styled.div`
 display: flex;
 justify-content: center;
@@ -10,7 +9,6 @@ align-items: center;
 gap: 10px;
 
 ` 
-
 
 export default class Input extends React.Component {
 state = {
@@ -35,7 +33,6 @@ deleteUser = (id) => {
   })
   .then(()=> alert("usuário deletado"))
   .catch(()=> alert("erro ao deletar"))
- 
 }
 
 getUsers = () => {
@@ -49,7 +46,6 @@ getUsers = () => {
    }).catch((err => {
      alert("deu ruim")
    }))
-
   }
 
   render() {
