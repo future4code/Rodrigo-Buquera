@@ -18,13 +18,11 @@ export default class Input extends React.Component {
   }
 
   handleEmail = (e) => { 
-      this.setState({inputEmail: e.target.value})
-     // this.setState({inputEmail: ""})  
+      this.setState({inputEmail: e.target.value})  
 }
   
   handleNome = (e) => { 
       this.setState({inputName: e.target.value})
-     // this.setState({inputName: "")  
     }
 
   criaUser = () => {
@@ -38,9 +36,10 @@ export default class Input extends React.Component {
               Authorization: "rodrigo-brezolin-paiva"
           }
       }).then((res) => {  
-          alert("sucesso")  
+          alert("Usuário criado com sucesso")  
+          this.setState({inputName: "", inputEmail: "" })
         }).catch((err) => {
-            alert("errouuuu!!!")
+            alert(err.response.data.message)
         })                
   }
 
@@ -49,8 +48,17 @@ export default class Input extends React.Component {
     
           <h4>Criar usuários</h4>
           <div>
-          <input placeholder="nome" value={this.state.inputName} onChange={this.handleNome}/>
-          <input placeholder="email" value={this.state.inputEmail} onChange={this.handleEmail} />
+
+          <input 
+          placeholder="nome" 
+          value={this.state.inputName} 
+          onChange={this.handleNome}/>
+
+          <input 
+          placeholder="email" 
+          value={this.state.inputEmail} 
+          onChange={this.handleEmail}/>
+
           <button onClick={this.criaUser} > Criar </button>
           </div>
       
