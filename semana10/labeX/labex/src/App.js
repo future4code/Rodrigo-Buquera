@@ -1,12 +1,6 @@
 import './App.css';
 import { ChakraProvider, extendTheme } from "@chakra-ui/react"
-import HomePage from "./pages/HomePage"
-import AdminHomePage from "./pages/AdminHomePage"
-import ApplicationFormPage from "./pages/ApplicationFormPage"
-import TripDetailsPage from "./pages/TripDetailsPage"
-import CreateTripPage from "./pages/CreateTripPage"
-import LoginPage from "./pages/LoginPage"
-import ListTripsPage from "./pages/ListTripsPage"
+import RouteManager from "./route/Router"
 
 const theme = extendTheme({
   colors: {
@@ -23,13 +17,7 @@ function App() {
 
     <ChakraProvider theme={theme}>
 
-      <HomePage/>
-      <ListTripsPage/>
-      <ApplicationFormPage/>
-      <LoginPage/>
-      <AdminHomePage/>
-      <CreateTripPage/>
-      <TripDetailsPage/>
+      <RouteManager/>
       
     </ChakraProvider>
   );
