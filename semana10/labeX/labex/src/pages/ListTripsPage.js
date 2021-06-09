@@ -7,7 +7,7 @@ import {
     BoxContainer,
     ButtonsContainer,
     Title,
-  } from "./Styled/Styled";
+  } from "../constants/Styled/Styled";
   import { Button, ButtonGroup } from "@chakra-ui/react";
   import {TripsList} from "../components/TripsList/TripsList"
 

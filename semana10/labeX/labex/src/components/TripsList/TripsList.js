@@ -1,10 +1,7 @@
 import styled from "styled-components";
 import { useTripsLists } from "../../hooks/requests";
 import React from "react";
-
-const TripCard = styled.div`
-border: 1px solid black;
-`;
+import { TripCard} from "../../constants/Styled/Styled";
 
 export function TripsList() {
   const trips = useTripsLists();

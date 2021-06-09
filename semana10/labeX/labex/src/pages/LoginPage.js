@@ -3,24 +3,58 @@ import styled from "styled-components";
 import { useHistory, useParams } from "react-router-dom";
 import { goToLastPage, goToAdminHome } from "../route/Coordinator";
 import {
-    MainContainer,
-    BoxContainer,
-    ButtonsContainer,
-    Title,
-  } from "./Styled/Styled";
-  import { Button, ButtonGroup } from "@chakra-ui/react";
+  MainContainer,
+  BoxContainer,
+  ButtonsContainer,
+  Title,
+} from "../constants/Styled/Styled";
+import { Button, ButtonGroup } from "@chakra-ui/react";
+import { Input, Select } from "@chakra-ui/react";
+import useInput from "../hooks/useInput";
+import axios from "axios"
+import {baseURL} from '../constants/baseURL';
 
+const LoginPage = () => {
+  const [email, setEmail] = useInput("");
+  const [password, setPassword] = useInput("");
+  const history = useHistory();
 
- const LoginPage = () => {
-    const history = useHistory();
+    const loginAdmin = () =>{
+    const URL = `${baseURL}/login`
+    const body = { email, password};
+    
+    axios.post(URL, body)
+    .then((res)=>{
+        localStorage.setItem("token", res.data.token)
+        goToAdminHome(history)        
+    })
+    .catch((err)=>{
+        alert(err.response.data.message)
+    })
+  }
 
-    return (
-        <MainContainer>
-            
+  return (
+    <MainContainer>
+      <BoxContainer>
 
-            <ButtonsContainer>
-            <Button
-            onClick={() =>  goToLastPage(history)}
+        <Title>Login</Title>
+
+        <Input
+          value={email}
+          onChange={setEmail}
+          placeholder="email"
+        />
+
+        <Input
+          value={password}
+          onChange={setPassword}
+          placeholder="senha"
+          type="password"
+        />
+
+        <ButtonsContainer>
+          <Button
+            onClick={() => goToLastPage(history)}
             colorScheme="brand"
             size="lg"
             color="#251D44"
@@ -29,7 +63,7 @@ import {
           </Button>
 
           <Button
-            onClick={() => goToAdminHome(history)}
+            onClick={() => loginAdmin()}
             colorScheme="brand"
             size="lg"
             color="#251D44"
@@ -37,10 +71,10 @@ import {
             Entrar
           </Button>
 
-            </ButtonsContainer>
-        </MainContainer>
-    )   
- }
+        </ButtonsContainer>
+      </BoxContainer>
+    </MainContainer>
+  )
+}
 
- export default LoginPage
- 
+export default LoginPage

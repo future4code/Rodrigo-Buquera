@@ -5,7 +5,7 @@ import {
   BoxContainer,
   ButtonsContainer,
   Title,
-} from "./Styled/Styled";
+} from "../constants/Styled/Styled";
 import { Button, ButtonGroup } from "@chakra-ui/react";
 import { useHistory, useParams } from "react-router-dom";
 import { goToTripsList, goToLogin } from "../route/Coordinator";

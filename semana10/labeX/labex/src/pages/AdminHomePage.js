@@ -7,12 +7,15 @@ import {
     BoxContainer,
     ButtonsContainer,
     Title,
-  } from "./Styled/Styled";
+  } from "../constants/Styled/Styled";
   import { Button, ButtonGroup } from "@chakra-ui/react";
+import useProtectedPage from '../hooks/useProtectedPage';
 
 
  const AdminHomePage = () => {
     const history = useHistory();
+
+    useProtectedPage()
 
     return (
         <MainContainer>

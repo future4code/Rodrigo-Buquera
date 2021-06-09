@@ -31,5 +31,7 @@ export const Title =styled.p`
 padding-top: 10%;
 font-size: 2em;
 color: #A4EA73; 
-
 `
+export const TripCard = styled.div`
+border: 1px solid black;
+`;
