@@ -1,11 +1,19 @@
 import styled from "styled-components";
 
 export const MainContainer = styled.div`
-/* background-color: #1A173B;  */
+background-color: #1A173B; 
 width: 100vw;
 height:100vh;
 display: flex;
 justify-content: center;
+align-items: center;
+`
+export const VertMainContainer = styled.div`
+background-color: #1A173B; 
+width: 100vw;
+height:100vh;
+display: flex;
+flex-direction: column;
 align-items: center;
 `
 
@@ -33,5 +41,11 @@ font-size: 2em;
 color: #A4EA73; 
 `
 export const TripCard = styled.div`
-border: 1px solid black;
-`;
+background-color: #577955; 
+width: 60vh;
+display: flex;
+flex-direction: column;
+margin: 1em 0;
+color: white;
+
+`

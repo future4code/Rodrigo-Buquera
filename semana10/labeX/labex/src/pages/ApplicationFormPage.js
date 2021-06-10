@@ -1,22 +1,20 @@
 import React from 'react'
 import {
-    MainContainer,
+  VertMainContainer,
     BoxContainer,
     ButtonsContainer,
     Title,
   } from "../constants/Styled/Styled";
   import {ApplicationForm} from "../components/ApplicationForms/ApplicationForms"
 
-
  const ApplicationFormPage = () => {
     return (
-        <MainContainer>
-            
+        <VertMainContainer>
+
+          <Title>Inscreva-se para uma viagem</Title>
           <ApplicationForm />
-
-
            
-        </MainContainer>
+        </VertMainContainer>
     )   
  }
 

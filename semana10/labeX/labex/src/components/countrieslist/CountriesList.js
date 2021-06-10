@@ -5,6 +5,8 @@ export function CountriesList(props) {
 
     return (
         <Select
+            required
+            name="country"
             value={props.country}
             onChange={props.setCountry}
             placeholder="Escolha um pais">

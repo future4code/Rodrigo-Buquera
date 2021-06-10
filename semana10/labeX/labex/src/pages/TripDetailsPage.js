@@ -1,52 +1,71 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from "styled-components";
 import { useHistory, useParams } from "react-router-dom";
-import {  } from "../route/Coordinator";
+import { goToLastPage } from "../route/Coordinator";
 import {
-    MainContainer,
-    BoxContainer,
-    ButtonsContainer,
-    Title,
-  } from "../constants/Styled/Styled";
-  import { Button, ButtonGroup } from "@chakra-ui/react";
+  VertMainContainer,
+  BoxContainer,
+  ButtonsContainer,
+  Title,
+} from "../constants/Styled/Styled";
+import { Button, ButtonGroup } from "@chakra-ui/react";
 import useProtectedPage from '../hooks/useProtectedPage';
 import axios from "axios"
 import { baseURL } from '../constants/baseURL';
 import TripDetailsCard from '../components/tripDetailsCard/TripDetailsCard';
+import PendingCandidatesCard from '../components/pendingCandidatesCard/PendingCandidatesCard';
+import AprovedCandidatesCard from '../components/aprovedCandidatesList/AprovedCandidatesList';
 
- const TripDetailsPage = () => {
-    const [trip, setTrip] = useState({});
+const TripDetailsPage = () => {
+  const [trip, setTrip] = useState({});
+  const params = useParams()
+  const history = useHistory()
 
-    useProtectedPage()
+  useProtectedPage()
 
+  const headers = {
+    headers: { auth: localStorage.getItem("token") }
+  }
 
-    const getTripDetails = (id) => {       
-        const URL = `${baseURL}/trip/${id}`
-        const headers = { 
-            headers: { auth: localStorage.getItem("token") }
-        }
-        
-        axios.get(URL, headers)
-        .then((res) =>{
-            setTrip(res.data.trip)          
-        })
-        .catch((err) =>{
-            alert(err.response.data.message)
-        })  
-    }
+  const getTripDetails = () => {
+    const URL = `${baseURL}/trip/${params.id}`
 
-    useEffect(() =>{
-        // alterar ID
-        getTripDetails("3waAbx9Lqs96mwVOayNT")
-    }, [])
+    axios.get(URL, headers)
+      .then((res) => {
+        setTrip(res.data.trip)
+      })
+      .catch((err) => {
+        alert(err.response.data.message)
+      })
+  }
 
-    return (
-        <MainContainer>
+  useEffect(() => {
+    getTripDetails()
+  }, [trip])
 
-            <TripDetailsCard trip={trip}/>
+  return (
+    <VertMainContainer>
+      <Title>Lista de Viagens</Title>
 
-        </MainContainer>
-    )   
- }
+      <TripDetailsCard trip={trip} />
 
- export default TripDetailsPage
+      <Button
+        onClick={() => goToLastPage(history)}
+        colorScheme="brand"
+        size="lg"
+        color="#251D44"
+      >
+        Voltar
+          </Button>
+
+      <Title> Candidatos pendentes</Title>
+      <PendingCandidatesCard trip={trip} headers={headers} id={params.id} />
+
+      <Title> Candidatos aprovados</Title>
+      <AprovedCandidatesCard trip={trip} />
+
+    </VertMainContainer>
+  )
+}
+
+export default TripDetailsPage

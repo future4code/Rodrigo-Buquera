@@ -1,13 +1,12 @@
 import React from "react";
-import styled from "styled-components";
 import {
   MainContainer,
   BoxContainer,
   ButtonsContainer,
   Title,
 } from "../constants/Styled/Styled";
-import { Button, ButtonGroup } from "@chakra-ui/react";
-import { useHistory, useParams } from "react-router-dom";
+import { Button } from "@chakra-ui/react";
+import { useHistory } from "react-router-dom";
 import { goToTripsList, goToLogin } from "../route/Coordinator";
 
 const HomePage = () => {
@@ -38,7 +37,7 @@ const HomePage = () => {
           </Button>
         </ButtonsContainer>
       </BoxContainer>
-     
+
     </MainContainer>
   );
 };

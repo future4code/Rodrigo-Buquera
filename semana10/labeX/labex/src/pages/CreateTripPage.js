@@ -1,48 +1,27 @@
 import React from 'react'
-import styled from "styled-components";
 import { useHistory, useParams } from "react-router-dom";
-import { goToLastPage } from "../route/Coordinator";
 import {
-    MainContainer,
+    VertMainContainer,
     BoxContainer,
     ButtonsContainer,
     Title,
-  } from "../constants/Styled/Styled";
-  import { Button, ButtonGroup } from "@chakra-ui/react";
+} from "../constants/Styled/Styled";
 import useProtectedPage from '../hooks/useProtectedPage';
+import { CreateTripForm } from '../components/createTripForm/CreateTripForm';
 
-
- const CreateTripPage = () => {
+const CreateTripPage = () => {
     const history = useHistory();
 
     useProtectedPage()
 
     return (
-        <MainContainer>
-            
-            <ButtonsContainer>
-            <Button
-            onClick={() =>  goToLastPage(history)}
-            colorScheme="brand"
-            size="lg"
-            color="#251D44"
-          >
-            Voltar
-          </Button>
+        <VertMainContainer>
 
-          <Button
-            
-            colorScheme="brand"
-            size="lg"
-            color="#251D44"
-          >
-            Criar
-          </Button>
+            <Title>Criar viagem</Title>
+            <CreateTripForm />
 
-            </ButtonsContainer>
-    
-        </MainContainer>
-    )   
- }
+        </VertMainContainer>
+    )
+}
 
- export default CreateTripPage
+export default CreateTripPage

@@ -1,6 +1,5 @@
 import React from 'react'
-import styled from "styled-components";
-import { useHistory, useParams } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { goToLastPage, goToAdminHome } from "../route/Coordinator";
 import {
   MainContainer,
@@ -8,29 +7,29 @@ import {
   ButtonsContainer,
   Title,
 } from "../constants/Styled/Styled";
-import { Button, ButtonGroup } from "@chakra-ui/react";
-import { Input, Select } from "@chakra-ui/react";
+import { Button } from "@chakra-ui/react";
+import { Input } from "@chakra-ui/react";
 import useInput from "../hooks/useInput";
 import axios from "axios"
-import {baseURL} from '../constants/baseURL';
+import { baseURL } from '../constants/baseURL';
 
 const LoginPage = () => {
   const [email, setEmail] = useInput("");
   const [password, setPassword] = useInput("");
   const history = useHistory();
 
-    const loginAdmin = () =>{
+  const loginAdmin = () => {
     const URL = `${baseURL}/login`
-    const body = { email, password};
-    
+    const body = { email, password };
+
     axios.post(URL, body)
-    .then((res)=>{
+      .then((res) => {
         localStorage.setItem("token", res.data.token)
-        goToAdminHome(history)        
-    })
-    .catch((err)=>{
+        goToAdminHome(history)
+      })
+      .catch((err) => {
         alert(err.response.data.message)
-    })
+      })
   }
 
   return (

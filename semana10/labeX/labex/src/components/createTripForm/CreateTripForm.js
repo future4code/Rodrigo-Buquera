@@ -1,7 +1,6 @@
-import { useTripsLists, applyToTrip } from "../../hooks/requests";
-import React from "react";
+import { useTripsLists, createTrip } from "../../hooks/requests";
+import React, { useEffect } from "react";
 import { Input, Select } from "@chakra-ui/react";
-import { CountriesList } from "../countrieslist/CountriesList";
 import { useHistory } from "react-router-dom";
 import { goToLastPage } from "../../route/Coordinator";
 import { Button } from "@chakra-ui/react";
@@ -12,88 +11,76 @@ import {
   Title,
 } from "../../constants/Styled/Styled";
 import useForm from "../../hooks/useForm"
+import { PlanetsList } from "../planetsList/PlanetsList";
 
-export function ApplicationForm() {
+
+export function CreateTripForm() {
   const [form, onChange, cleanFields] = useForm({
-    applicationText: "",
-    profession: "",
-    country: "",
-    age: "",
     name: "",
-    id: ""
+    planet: "",
+    date: "",
+    description: "",
+    durationInDays: ""
   })
 
   const history = useHistory();
   const trips = useTripsLists();
 
-  const sendForm = (event) => {
+  const submitCreation = (event) => {
     event.preventDefault();
-    applyToTrip(form)
+    createTrip(form)
     cleanFields();
   };
 
+  const date = new Date();
+
+
   return (
     <MainContainer>
-      <form onSubmit={sendForm}>
-        <Select
-          name="id"
-          onChange={onChange}
-          placeholder="Escolha uma viagem"
-          value={form.id}
-          required
-        >
-          {trips.map((trip) => {
-            return (
-              <option key={trip.id} value={trip.id}>
-                {trip.name}
-              </option>
-            );
-          })}
-        </Select>
+      <form onSubmit={submitCreation}>
 
         <Input
           name={"name"}
           value={form.name}
           onChange={onChange}
-          placeholder="Nome"
+          placeholder="Nome da viagem"
           required
           pattern={"^.{3,}"}
           title={"O nome deve ter no mínimo 3 caracteres"}
         />
 
-        <Input
-          name={"age"}
-          value={form.age}
+        <PlanetsList
+          planet={form.planet}
           onChange={onChange}
-          type="number"
-          min={18}
-          placeholder="Idade"
+        />
+
+        <Input
+          name={"date"}
+          value={form.date}
+          onChange={onChange}
+          type="date"
+          min={date}
           required
         />
 
         <Input
-          name={"applicationText"}
-          value={form.applicationText}
+          name={"description"}
+          value={form.description}
           onChange={onChange}
-          placeholder="Texto de candidatura"
+          placeholder="Descrição"
           required
           pattern={"^.{30,}"}
           title={"Deve ter no mínimo 30 caracteres"}
         />
 
         <Input
-          name={"profession"}
-          value={form.profession}
+          name={"durationInDays"}
+          value={form.durationInDays}
           onChange={onChange}
-          placeholder="Profissão"
+          type="number"
+          min={50}
           required
-          pattern={"^.{10,}"}
-          title={"Deve ter no mínimo 10 caracteres"}
-        />
-
-        <CountriesList
-          country={form.country}
-          setCountry={onChange}
+          placeholder="Duração"
         />
 
         <button
@@ -101,7 +88,7 @@ export function ApplicationForm() {
           size="lg"
           color="#251D44"
         >
-          Enviar
+          Criar
           </button>
       </form>
 

@@ -1,57 +1,62 @@
 import React from 'react'
-import styled from "styled-components";
-import { useHistory, useParams } from "react-router-dom";
-import { goToLastPage, goToCreateTrip } from "../route/Coordinator";
+import { useHistory } from "react-router-dom";
+import { goToLastPage, goToCreateTrip, goToAdminHome } from "../route/Coordinator";
 import {
-    MainContainer,
-    BoxContainer,
-    ButtonsContainer,
-    Title,
-  } from "../constants/Styled/Styled";
-  import { Button, ButtonGroup } from "@chakra-ui/react";
+  VertMainContainer,
+  BoxContainer,
+  ButtonsContainer,
+  Title,
+} from "../constants/Styled/Styled";
+import { Button } from "@chakra-ui/react";
 import useProtectedPage from '../hooks/useProtectedPage';
+import AdminTripsList from '../components/adminTripsList/AdminTripsList';
 
+const AdminHomePage = () => {
+  const history = useHistory();
 
- const AdminHomePage = () => {
-    const history = useHistory();
+  useProtectedPage()
 
-    useProtectedPage()
+  const logOut = () => {
+    localStorage.setItem("token", "")
+    goToAdminHome(history)
+  }
 
-    return (
-        <MainContainer>
-            
-            <ButtonsContainer>
-            <Button
-            onClick={() =>  goToLastPage(history)}
-            colorScheme="brand"
-            size="lg"
-            color="#251D44"
-          >
-            Voltar
+  return (
+    <VertMainContainer>
+
+      <ButtonsContainer>
+        <Button
+          onClick={() => goToLastPage(history)}
+          colorScheme="brand"
+          size="lg"
+          color="#251D44"
+        >
+          Voltar
           </Button>
 
-          <Button
-            onClick={() => goToCreateTrip(history)}
-            colorScheme="brand"
-            size="lg"
-            color="#251D44"
-          >
-            Criar viagem
+        <Button
+          onClick={() => goToCreateTrip(history)}
+          colorScheme="brand"
+          size="lg"
+          color="#251D44"
+        >
+          Criar viagem
           </Button>
 
-          <Button
-            
-            colorScheme="brand"
-            size="lg"
-            color="#251D44"
-          >
-            Logout
+        <Button
+          onClick={logOut}
+          colorScheme="brand"
+          size="lg"
+          color="#251D44"
+        >
+          Logout
           </Button>
 
-            </ButtonsContainer>
-        </MainContainer>
-    )   
- }
+        <AdminTripsList />
 
- export default AdminHomePage
- 
+      </ButtonsContainer>
+    </VertMainContainer>
+  )
+}
+
+export default AdminHomePage

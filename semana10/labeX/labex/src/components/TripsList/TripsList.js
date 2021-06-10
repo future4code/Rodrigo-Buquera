@@ -1,7 +1,6 @@
-import styled from "styled-components";
 import { useTripsLists } from "../../hooks/requests";
 import React from "react";
-import { TripCard} from "../../constants/Styled/Styled";
+import { TripCard } from "../../constants/Styled/Styled";
 
 export function TripsList() {
   const trips = useTripsLists();
