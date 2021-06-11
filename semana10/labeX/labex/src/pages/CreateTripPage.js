@@ -1,13 +1,11 @@
 import React from 'react'
-import { useHistory, useParams } from "react-router-dom";
-import {
-    VertMainContainer,
-    BoxContainer,
-    ButtonsContainer,
-    Title,
-} from "../constants/Styled/Styled";
+import { useHistory } from "react-router-dom";
+import { Vert2MainContainer, Title, ContFlex, RightImg, } from "../constants/Styled/Styled";
 import useProtectedPage from '../hooks/useProtectedPage';
 import { CreateTripForm } from '../components/createTripForm/CreateTripForm';
+import { goToLastPage } from "../route/Coordinator";
+import { Button } from "@chakra-ui/react";
+import Galaxy from "../assets/Galaxy.png"
 
 const CreateTripPage = () => {
     const history = useHistory();
@@ -15,12 +13,25 @@ const CreateTripPage = () => {
     useProtectedPage()
 
     return (
-        <VertMainContainer>
+        <Vert2MainContainer>
 
             <Title>Criar viagem</Title>
-            <CreateTripForm />
 
-        </VertMainContainer>
+            <ContFlex>
+                <CreateTripForm />
+                <RightImg src={Galaxy} alt="imagem astronauta" />
+            </ContFlex>
+
+            <Button
+                onClick={() => goToLastPage(history)}
+                colorScheme="brand"
+                size="lg"
+                color="#251D44"
+            >
+                Voltar
+            </Button>
+
+        </Vert2MainContainer>
     )
 }
 

@@ -61,9 +61,10 @@ export const deleteTrip = (id) => {
 
     axios.delete(URL, headers)
         .then(() => {
-            alert("Viagem deletada")
+            window.confirm("Deseja realmente excluir essa viagem?")
         })
         .catch((err) => {
             alert(err.response.data.message)
         })
 }
+

@@ -1,16 +1,7 @@
 import { useTripsLists, applyToTrip } from "../../hooks/requests";
 import React from "react";
-import { Input, Select } from "@chakra-ui/react";
 import { CountriesList } from "../countrieslist/CountriesList";
-import { useHistory } from "react-router-dom";
-import { goToLastPage } from "../../route/Coordinator";
-import { Button } from "@chakra-ui/react";
-import {
-  MainContainer,
-  BoxContainer,
-  ButtonsContainer,
-  Title,
-} from "../../constants/Styled/Styled";
+import {FormButton, Input, Select, FormDiv, FormContainer} from "../../constants/Styled/Styled";
 import useForm from "../../hooks/useForm"
 
 export function ApplicationForm() {
@@ -23,7 +14,6 @@ export function ApplicationForm() {
     id: ""
   })
 
-  const history = useHistory();
   const trips = useTripsLists();
 
   const sendForm = (event) => {
@@ -33,8 +23,8 @@ export function ApplicationForm() {
   };
 
   return (
-    <MainContainer>
-      <form onSubmit={sendForm}>
+    <div>
+      <FormContainer onSubmit={sendForm}>
         <Select
           name="id"
           onChange={onChange}
@@ -59,6 +49,7 @@ export function ApplicationForm() {
           required
           pattern={"^.{3,}"}
           title={"O nome deve ter no mínimo 3 caracteres"}
+          colorScheme="whiteAlpha"
         />
 
         <Input
@@ -96,26 +87,19 @@ export function ApplicationForm() {
           setCountry={onChange}
         />
 
-        <button
-          colorScheme="brand"
-          size="lg"
-          color="#251D44"
-        >
-          Enviar
-          </button>
-      </form>
+        <FormDiv>
+          <FormButton
+            colorScheme="brand"
+            size="lg"
+            color="#251D44"
+          >
+            Enviar
+          </FormButton>
+        </FormDiv>
 
-      <ButtonsContainer>
-        <Button
-          onClick={() => goToLastPage(history)}
-          colorScheme="brand"
-          size="lg"
-          color="#251D44"
-        >
-          Voltar
-          </Button>
+      </FormContainer>
 
-      </ButtonsContainer>
-    </MainContainer>
+
+    </div>
   );
 }

@@ -1,18 +1,12 @@
 import { useTripsLists, createTrip } from "../../hooks/requests";
-import React, { useEffect } from "react";
-import { Input, Select } from "@chakra-ui/react";
+import React from "react";
 import { useHistory } from "react-router-dom";
-import { goToLastPage } from "../../route/Coordinator";
-import { Button } from "@chakra-ui/react";
-import {
-  MainContainer,
-  BoxContainer,
-  ButtonsContainer,
-  Title,
-} from "../../constants/Styled/Styled";
+import { Input, FormButton, FormDiv,FormContainer } from "../../constants/Styled/Styled";
 import useForm from "../../hooks/useForm"
 import { PlanetsList } from "../planetsList/PlanetsList";
 
+const date = new Date();
+const minDate = `${date.getUTCDay()}/${date.getMonth()}/${date.getFullYear()}`
 
 export function CreateTripForm() {
   const [form, onChange, cleanFields] = useForm({
@@ -32,11 +26,8 @@ export function CreateTripForm() {
     cleanFields();
   };
 
-  const date = new Date();
-
-
   return (
-    <MainContainer>
+    <FormContainer>
       <form onSubmit={submitCreation}>
 
         <Input
@@ -59,7 +50,7 @@ export function CreateTripForm() {
           value={form.date}
           onChange={onChange}
           type="date"
-          min={date}
+          min={`${minDate}`}
           required
         />
 
@@ -83,26 +74,14 @@ export function CreateTripForm() {
           placeholder="Duração"
         />
 
-        <button
-          colorScheme="brand"
-          size="lg"
-          color="#251D44"
-        >
-          Criar
-          </button>
+        <FormDiv>
+          <FormButton >
+            Criar
+          </FormButton>
+        </FormDiv>
+
       </form>
 
-      <ButtonsContainer>
-        <Button
-          onClick={() => goToLastPage(history)}
-          colorScheme="brand"
-          size="lg"
-          color="#251D44"
-        >
-          Voltar
-          </Button>
-
-      </ButtonsContainer>
-    </MainContainer>
+    </FormContainer>
   );
 }

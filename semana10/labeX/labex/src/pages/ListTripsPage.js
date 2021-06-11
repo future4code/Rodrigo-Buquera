@@ -1,12 +1,7 @@
 import React from 'react'
 import { useHistory } from "react-router-dom";
 import { goToLastPage, goToApplication } from "../route/Coordinator";
-import {
-  MainContainer,
-  BoxContainer,
-  ButtonsContainer,
-  Title,
-} from "../constants/Styled/Styled";
+import {VertMainContainer, ButtonsContainer, Title,} from "../constants/Styled/Styled";
 import { Button } from "@chakra-ui/react";
 import { TripsList } from "../components/TripsList/TripsList"
 
@@ -14,7 +9,7 @@ const ListTripsPage = () => {
   const history = useHistory();
 
   return (
-    <MainContainer>
+    <VertMainContainer>
 
       <ButtonsContainer>
         <Button
@@ -41,7 +36,7 @@ const ListTripsPage = () => {
       
       <TripsList />
 
-    </MainContainer>
+    </VertMainContainer>
   )
 }
 

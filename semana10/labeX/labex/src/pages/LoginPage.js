@@ -6,9 +6,9 @@ import {
   BoxContainer,
   ButtonsContainer,
   Title,
+  Input
 } from "../constants/Styled/Styled";
 import { Button } from "@chakra-ui/react";
-import { Input } from "@chakra-ui/react";
 import useInput from "../hooks/useInput";
 import axios from "axios"
 import { baseURL } from '../constants/baseURL';

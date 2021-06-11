@@ -1,12 +1,7 @@
 import React from 'react'
 import { useHistory } from "react-router-dom";
-import { goToLastPage, goToCreateTrip, goToAdminHome } from "../route/Coordinator";
-import {
-  VertMainContainer,
-  BoxContainer,
-  ButtonsContainer,
-  Title,
-} from "../constants/Styled/Styled";
+import { goToLastPage, goToCreateTrip, goToLogin } from "../route/Coordinator";
+import { Vert2MainContainer, ButtonsContainer} from "../constants/Styled/Styled";
 import { Button } from "@chakra-ui/react";
 import useProtectedPage from '../hooks/useProtectedPage';
 import AdminTripsList from '../components/adminTripsList/AdminTripsList';
@@ -18,11 +13,11 @@ const AdminHomePage = () => {
 
   const logOut = () => {
     localStorage.setItem("token", "")
-    goToAdminHome(history)
+    goToLogin(history)
   }
 
   return (
-    <VertMainContainer>
+    <Vert2MainContainer>
 
       <ButtonsContainer>
         <Button
@@ -52,10 +47,13 @@ const AdminHomePage = () => {
           Logout
           </Button>
 
-        <AdminTripsList />
+        
 
       </ButtonsContainer>
-    </VertMainContainer>
+
+      <AdminTripsList />
+
+    </Vert2MainContainer>
   )
 }
 

@@ -1,13 +1,6 @@
-import styled from "styled-components";
 import React from "react";
-import { Button, ButtonGroup } from "@chakra-ui/react";
-import {
-    MainContainer,
-    BoxContainer,
-    ButtonsContainer,
-    Title,
-    TripCard
-} from "../../constants/Styled/Styled";
+import { Button } from "@chakra-ui/react";
+import {ButtonsContainer, TripCard} from "../../constants/Styled/Styled";
 import { baseURL } from "../../constants/baseURL";
 import axios from "axios"
 
@@ -17,7 +10,7 @@ export default function PendingCandidatesCard(props) {
     const decideCandidate = (id, bool) => {
         const URL = `${baseURL}/trips/${props.trip.id}/candidates/${id}/decide`
         const body = { "approve": bool }
-
+    
         axios.put(URL, body, props.headers)
             .then(() => {
                 if (bool) {
@@ -30,10 +23,10 @@ export default function PendingCandidatesCard(props) {
                 alert(err.response.data.message)
             })
     }
-
+   
     return (
         <div>
-            {candidates &&
+            {candidates ?
                 candidates.map((candidate) => {
                     return (
 
@@ -68,7 +61,10 @@ export default function PendingCandidatesCard(props) {
                         </TripCard>
 
                     );
-                })}
+                })
+                :
+                <TripCard>Não há Candidatos pendentes</TripCard>
+            }
         </div>
     );
 }

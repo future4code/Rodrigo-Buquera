@@ -1,14 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import styled from "styled-components";
 import { useHistory, useParams } from "react-router-dom";
 import { goToLastPage } from "../route/Coordinator";
-import {
-  VertMainContainer,
-  BoxContainer,
-  ButtonsContainer,
-  Title,
-} from "../constants/Styled/Styled";
-import { Button, ButtonGroup } from "@chakra-ui/react";
+import { VertMainContainer, Title,} from "../constants/Styled/Styled";
+import { Button } from "@chakra-ui/react";
 import useProtectedPage from '../hooks/useProtectedPage';
 import axios from "axios"
 import { baseURL } from '../constants/baseURL';
@@ -45,7 +39,7 @@ const TripDetailsPage = () => {
 
   return (
     <VertMainContainer>
-      <Title>Lista de Viagens</Title>
+      <Title>Viagem:</Title>
 
       <TripDetailsCard trip={trip} />
 

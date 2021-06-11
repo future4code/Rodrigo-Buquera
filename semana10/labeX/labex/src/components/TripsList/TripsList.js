@@ -7,7 +7,8 @@ export function TripsList() {
 
   return (
     <div>
-      {trips.length &&
+
+      {trips.length ?
         trips.map((trip) => {
           return (
             <TripCard key={trip.id}>
@@ -17,8 +18,13 @@ export function TripsList() {
               <p> Duração:{trip.durationInDays}</p>
               <p> Data: {trip.date}</p>
             </TripCard>
+          
           );
-        })}
+        }) 
+        :
+        <TripCard>Carregando....</TripCard>
+      
+      }
     </div>
   );
 }
