@@ -68,3 +68,19 @@ export const deleteTrip = (id) => {
         })
 }
 
+export const decideCandidate = (id, bool, tripID, headers) => {
+    const URL = `${baseURL}/trips/${tripID}/candidates/${id}/decide`
+    const body = { "approve": bool }
+
+    axios.put(URL, body, headers)
+        .then(() => {
+            if (bool) {
+                alert("Candidato aceito")
+            } else {
+                alert("Candidato recusado")
+            }                
+        })
+        .catch((err) => {
+            alert(err.response.data.message)
+        })
+}

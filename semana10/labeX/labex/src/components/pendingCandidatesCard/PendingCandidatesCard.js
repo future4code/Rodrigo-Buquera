@@ -1,29 +1,11 @@
 import React from "react";
 import { Button } from "@chakra-ui/react";
 import {ButtonsContainer, TripCard} from "../../constants/Styled/Styled";
-import { baseURL } from "../../constants/baseURL";
-import axios from "axios"
+import { decideCandidate } from "../../hooks/requests";
 
 export default function PendingCandidatesCard(props) {
     const candidates = props.trip.candidates;
-
-    const decideCandidate = (id, bool) => {
-        const URL = `${baseURL}/trips/${props.trip.id}/candidates/${id}/decide`
-        const body = { "approve": bool }
-    
-        axios.put(URL, body, props.headers)
-            .then(() => {
-                if (bool) {
-                    alert("Candidato aceito")
-                } else {
-                    alert("Candidato recusado")
-                }                
-            })
-            .catch((err) => {
-                alert(err.response.data.message)
-            })
-    }
-   
+  
     return (
         <div>
             {candidates ?
@@ -43,7 +25,7 @@ export default function PendingCandidatesCard(props) {
                                     colorScheme="brand"
                                     size="lg"
                                     color="#251D44"
-                                    onClick={() => decideCandidate(candidate.id, true)}
+                                    onClick={() => decideCandidate(candidate.id, true, props.trip.id, props.headers)}
                                 >
                                     Aprovar
                             </Button>
@@ -53,7 +35,7 @@ export default function PendingCandidatesCard(props) {
                                     colorScheme="brand"
                                     size="lg"
                                     color="#251D44"
-                                    onClick={() => decideCandidate(candidate.id, false)}
+                                    onClick={() => decideCandidate(candidate.id, false, props.trip.id, props.headers)}
                                 >
                                     Reprovar
                              </Button>
