@@ -1,62 +1,61 @@
-import React from 'react'
+import React, { useState } from 'react'
 import useForm from '../../hooks/useForm'
-import styled from "styled-components"
+import { MainContainer, LoginForm, BoxContainer } from "./styled"
 import Button from '@material-ui/core/Button';
-import { goToFeed, goToRegister } from '../../routes/coordinator';
+import { goToRegister } from '../../routes/coordinator';
 import { useHistory } from "react-router-dom"
 import { login } from '../../services/users';
 import useUnprotectedPage from '../../hooks/useUnprotectedPage';
+import CircularProgress from '@material-ui/core/CircularProgress'
 
 
-const MainContainer = styled.div`
-     display: flex;
-     flex-direction:column;
-     align-items:center;
 
-`
 
-const LoginPage = ({setRightButtonText}) => {
+const LoginPage = ({ setRightButtonText }) => {
     useUnprotectedPage()
     const [form, onChange, cleanFields] = useForm({ email: "", password: "" })
-        const history = useHistory()
+    const history = useHistory()
+    const [isLoading, setIsLoading] = useState(false)
 
     const onSubmitForm = (e) => {
         e.preventDefault()
-        login(form, cleanFields, history, setRightButtonText)
-        
+        login(form, cleanFields, history, setRightButtonText, setIsLoading)
     }
 
-    
+
     return (
         <MainContainer>
-            <form onSubmit={onSubmitForm} >
-                <input
-                    name={"email"}
-                    value={form.email}
-                    onChange={onChange}
-                    type="email"
-                    required
-                    placeholder="E-mail"
+            <BoxContainer>
+                <LoginForm onSubmit={onSubmitForm} >
+                    <input
+                        name={"email"}
+                        value={form.email}
+                        onChange={onChange}
+                        type="email"
+                        required
+                        placeholder="E-mail"
 
-                ></input>
+                    ></input>
 
-                <input
-                    name={"password"}
-                    value={form.password}
-                    onChange={onChange}
-                    type="password"
-                    required
-                    placeholder="Password"
+                    <input
+                        name={"password"}
+                        value={form.password}
+                        onChange={onChange}
+                        type="password"
+                        required
+                        placeholder="Password"
 
-                ></input>
+                    ></input>
 
-                <Button
-                    type={"submit"}
-                >Login</Button>
-            </form>
+                    <Button
+                        type={"submit"}
+                        variant={"contained"}
+                        color={"primary"}
+                    >{isLoading ? <CircularProgress color={"inherit"} size={24} /> : <>Login </>}</Button>
+                </LoginForm>
 
-            <Button onClick={() => goToRegister(history)}>Crie um cadastro</Button>
-
+                <Button variant={"text"} onClick={() => goToRegister(history)}>Crie um cadastro</Button>
+            </BoxContainer>
         </MainContainer>
     )
 }

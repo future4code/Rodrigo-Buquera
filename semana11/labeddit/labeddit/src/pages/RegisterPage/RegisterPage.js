@@ -1,10 +1,11 @@
-import React from 'react'
+import React,{useState} from 'react'
 import useForm from '../../hooks/useForm'
 import styled from "styled-components"
 import Button from '@material-ui/core/Button';
 import useUnprotectedPage from '../../hooks/useUnprotectedPage';
 import { signUp } from '../../services/users';
-import {useHistory} from "react-router-dom"
+import {useHistory} from "react-router-dom";
+import CircularProgress from '@material-ui/core/CircularProgress'
 
 const MainContainer = styled.div`
      display: flex;
@@ -18,11 +19,12 @@ const RegisterPage = ({setRightButtonText}) => {
     useUnprotectedPage()
     const [form, onChange, cleanFields] = useForm({ name: "", email: "", password: "" })
     const history =useHistory()
+    const [isLoading, setIsLoading] =useState(false)
    
 
     const onSubmitForm = (e) => {
         e.preventDefault()
-       signUp(form, cleanFields, history, setRightButtonText)
+       signUp(form, cleanFields, history, setRightButtonText, setIsLoading)
 
     }
     return (
@@ -35,7 +37,7 @@ const RegisterPage = ({setRightButtonText}) => {
                     onChange={onChange}
                     required
                     placeholder="Nome"
-
+                    pattern={"^.{3,}"}
                 ></input>
 
 
@@ -61,7 +63,7 @@ const RegisterPage = ({setRightButtonText}) => {
 
                 <Button
                     type={"submit"}
-                >Criar cadastro</Button>
+                >{isLoading ? <CircularProgress color={"inherit"} size={24} /> : <>Criar Cadastro </>}</Button>
             </form>
 
 
