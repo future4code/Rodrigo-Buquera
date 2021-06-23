@@ -1,51 +1,61 @@
 import React from 'react';
-import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
+import { StyledCard, RedArrowHover, GreenArrowHover } from "./styled"
+import CardActions from '@material-ui/core/CardActions';
+import { votePostUp, votePostDown, deletePostVote } from '../../services/posts';
 import { ImArrowDown, ImArrowUp } from 'react-icons/im'
-import { voteCommentUp, voteCommentDown, deleteCommentVote } from '../../services/posts';
-import { StyledCard, RedArrowHover,GreenArrowHover } from "./styled"
 
-const CommentCard = (props) => {
+const TitleCard = (props) => {
 
     const voteUp = (id) => {
         if (props.userVote) {
-            deleteCommentVote(id)
+            deletePostVote(id)
         } else {
-            voteCommentUp(id)
+            votePostUp(id)
         }
     }
 
     const voteDown = (id) => {
         if (props.userVote) {
-            deleteCommentVote(id)
+            deletePostVote(id)
         } else {
-            voteCommentDown(id)
+            votePostDown(id)
         }
     }
 
+    console.log(props)
     return (
-        <StyledCard  >
+        <StyledCard >
+
             <CardActions>
                 <GreenArrowHover>
                     <ImArrowUp onClick={() => voteUp(props.id)} />
                 </GreenArrowHover>
 
-                <Typography variant="h5" component="h2">
+                <Typography variant="body2" component="p">
                     {props.voteSum ? props.voteSum : "0"}
                 </Typography>
 
                 <RedArrowHover>
                     <ImArrowDown onClick={() => voteDown(props.id)} />
                 </RedArrowHover>
+            </CardActions>
 
+            <CardContent>
 
-                <Typography variant="h6" component="h2">
+                <Typography variant="h5" component="h2">
+                    {props.title}
+                </Typography>
+
+                <Typography variant="body2" component="p">
                     {props.body}
 
                 </Typography>
-            </CardActions>
+            </CardContent>
+
         </StyledCard>
     );
 }
 
-export default CommentCard
+export default TitleCard

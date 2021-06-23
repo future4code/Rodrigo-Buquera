@@ -1,7 +1,7 @@
 import axios from "axios"
 import { BASE_URL } from "../constants/URL"
 
-const auth = {    headers: { Authorization: localStorage.getItem("token") } }
+const auth = { headers: { Authorization: localStorage.getItem("token")}}
 
 export const createPost = (body, cleanFields, setIsLoading) => {
     setIsLoading(true)
@@ -14,7 +14,7 @@ export const createPost = (body, cleanFields, setIsLoading) => {
         })
         .catch((err) => {
             setIsLoading(false)
-            alert(err)
+            alert(err.response.data.message)
         })
 }
 
@@ -29,7 +29,7 @@ export const createComment = (body, id, cleanFields, setIsLoading) => {
         })
         .catch((err) => {
             setIsLoading(false)
-            alert(err)
+            alert(err.response.data.message)
         })
 }
 
@@ -40,7 +40,7 @@ export const votePostUp = (id) => {
         window.location.reload()
     })
     .catch((err) => {
-           alert(err)
+           alert(err.response.data.message)
         })
 }
 
@@ -51,7 +51,7 @@ export const votePostDown = (id) => {
         window.location.reload()
     })
     .catch((err) => {
-           alert(err)
+           alert(err.response.data.message)
         })
 }
 
@@ -62,7 +62,7 @@ export const voteCommentUp = (id) => {
         window.location.reload()
     })
     .catch((err) => {
-           alert(err)
+           alert(err.response.data.message)
         })
 }
 
@@ -73,7 +73,7 @@ export const voteCommentDown = (id) => {
         window.location.reload()
     })
     .catch((err) => {
-           alert(err)
+           alert(err.response.data.message)
         })
 }
 
@@ -83,7 +83,7 @@ export const deletePostVote = (id) => {
         window.location.reload()
     })
     .catch((err) => {
-           alert(err)
+           alert(err.response.data.message)
         })
 }
 
@@ -93,6 +93,6 @@ export const deleteCommentVote = (id) => {
      window.location.reload()
  })
  .catch((err) => {
-        alert(err)
+        alert(err.response.data.message)
      })
 }

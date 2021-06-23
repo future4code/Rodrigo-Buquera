@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
-export const FeedContainer = styled.div`
+export const ErrorContainer = styled.div`
 display: flex;
 flex-direction:column;
 align-items:center;
-padding-top: 1em;
+padding-top: 3em;
 gap: 1.5em;
 `

@@ -5,45 +5,45 @@ import useRequestData from "../../hooks/useRequestData"
 import { BASE_URL } from '../../constants/URL'
 import CreactePostForm from "../../components/createPostForm/createPostForm"
 import { goToPost } from '../../routes/coordinator'
-import {useHistory} from "react-router-dom"
+import { useHistory } from "react-router-dom"
+import { FeedContainer } from './styled'
+import Typography from '@material-ui/core/Typography';
+import CircularLoading from '../../components/circularLoading/CircularLoading'
 
-const FeedPage = () => {  
+const FeedPage = () => {
     useProtectedPage()
-    const posts = useRequestData([], `${BASE_URL}/posts` )
+    const posts = useRequestData([], `${BASE_URL}/posts`)
     const history = useHistory()
-    
-    const onClickPost =(id) => {
-        goToPost(history, id )
+
+    const onClickPost = (id) => {
+        goToPost(history, id)
     }
 
-    const postsList = posts.map((post) =>{
-        return (
-        <PostCard
-         key= {post.id}
-         id= {post.id} 
-         title={post.title}
-         body={post.body}
-         commentCount={post.commentCount}
-         voteSum={post.voteSum}
-         userVote={post.userVote}
-         onClick={() => onClickPost(post.id)}
-        />
-        )
-    
-    })
-    .sort(function(a, b) {
-        return (a.voteSum ===null)-(b.voteSum===null) || -(a.voteSum>b.voteSum)||+(a.voteSum<b.voteSum);
-    })
-    .sort((a, b) => (a.voteSum != null ? a.voteSum : Infinity) - (b.voteSum != null ? b.voteSum : Infinity))
+    const postsList = posts
+        .sort((a, b) => { return Number(b.voteSum) - Number(a.voteSum) })
+        .map((post) => {
+            return (
+                <PostCard
+                    key={post.id}
+                    id={post.id}
+                    title={post.title}
+                    body={post.body}
+                    commentCount={post.commentCount}
+                    voteSum={post.voteSum}
+                    userVote={post.userVote}
+                    onClick={() => onClickPost(post.id)}
+                />
+            )
+        })
 
-    
     return (
-        <div>
-           <CreactePostForm/>
+        <FeedContainer>
+            <Typography variant="h5" component="h2"> Bem vindo(a) ao seu feed </Typography>
 
+            <CreactePostForm />
 
-           { postsList.length ? postsList : "sem postagens"}
-        </div>
+            {postsList.length ? postsList : <CircularLoading/>}
+        </FeedContainer>
     )
 }
 

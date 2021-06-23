@@ -6,11 +6,8 @@ import PostPage from "../pages/PostPage/PostPage";
 import RegisterPage from "../pages/RegisterPage/RegisterPage";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
 
-
 const Router = ({setRightButtonText}) => {
     return (
-
-
         <Switch>
             <Route exact path="/login">
                 <LoginPage setRightButtonText={setRightButtonText} />
@@ -32,7 +29,6 @@ const Router = ({setRightButtonText}) => {
                 <ErrorPage />
             </Route>
         </Switch>
-
     )
 }
 

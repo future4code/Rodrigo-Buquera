@@ -14,7 +14,7 @@ export const login = (body, cleanFields, history, setRightButtonText, setIsLoadi
         })
         .catch((err) => { 
             setIsLoading(false)
-            alert(err)
+            alert(err.response.data.message)
         })
 
 }
@@ -31,7 +31,7 @@ export const signUp = (body, cleanFields, history, setRightButtonText, setIsLoad
         })
         .catch((err) => {
             setIsLoading(false) 
-            alert(err)
+            alert(err.response.data.message)
         })
 
 }

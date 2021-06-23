@@ -1,21 +1,11 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import { ImArrowDown, ImArrowUp } from 'react-icons/im'
 import { votePostUp, votePostDown, deletePostVote } from '../../services/posts';
-
-const useStyles = makeStyles({
-    root: {
-        minWidth: 275,
-    },
-
-});
+import { StyledCardContent, StyledCard, RedArrowHover, GreenArrowHover,TypographyHover } from "./styled"
 
 export default function PostCard(props) {
-    const classes = useStyles();
 
     const voteUp = (id) => {
         if (props.userVote) {
@@ -34,8 +24,8 @@ export default function PostCard(props) {
     }
 
     return (
-        <Card className={classes.root} >
-            <CardContent onClick={props.onClick}>
+        <StyledCard >
+            <StyledCardContent onClick={props.onClick}>
 
                 <Typography variant="h5" component="h2">
                     {props.title}
@@ -47,21 +37,28 @@ export default function PostCard(props) {
 
                 </Typography>
 
-            </CardContent>
+            </StyledCardContent>
 
             <CardActions>
-                <ImArrowUp onClick={() => voteUp(props.id)} />
+                <GreenArrowHover>
+                    <ImArrowUp onClick={() => voteUp(props.id)} />
+                </GreenArrowHover>
+
                 <Typography variant="body2" component="p">
                     {props.voteSum ? props.voteSum : "0"}
                 </Typography>
-                <ImArrowDown onClick={() => voteDown(props.id)} />
 
-                <Typography variant="body2" component="p">
+                <RedArrowHover>
+                    <ImArrowDown onClick={() => voteDown(props.id)} />
+                </RedArrowHover>
+
+
+                <TypographyHover variant="body2" component="p" onClick={props.onClick} >
                     {props.commentCount ? props.commentCount : "0"} Comentários
-                </Typography>
+                </TypographyHover>
 
 
             </CardActions>
-        </Card>
+        </StyledCard>
     );
 }

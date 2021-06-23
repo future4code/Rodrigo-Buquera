@@ -1,26 +1,20 @@
 import styled from "styled-components"
 import { secundaryColor } from "../../constants/colors"
 
-export const MainContainer = styled.div`
-display: flex;
-flex-direction:column;
-align-items:center;
-padding-top: 1em;
-`
-export const LoginForm = styled.form`
-display: flex;
-flex-direction:column;
-align-items:center;
-gap: 1em;
-`
-export const BoxContainer = styled.div`
+export const CreateContainer = styled.div`
 display: flex;
 flex-direction:column;
 align-items:center;
 padding: 1em;
 background-color: ${secundaryColor};
-margin-top: 2em;
+margin-top: 0.5em;
 border-radius:25px;
+`
+export const PostForm = styled.form`
+display: flex;
+flex-direction:column;
+align-items:center;
+gap: 0.5em;
 `
 export const Input = styled.input`
 font-size: 1em;
