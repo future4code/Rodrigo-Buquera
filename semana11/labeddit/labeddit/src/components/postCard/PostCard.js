@@ -3,7 +3,7 @@ import CardActions from '@material-ui/core/CardActions';
 import Typography from '@material-ui/core/Typography';
 import { ImArrowDown, ImArrowUp } from 'react-icons/im'
 import { votePostUp, votePostDown, deletePostVote } from '../../services/posts';
-import { StyledCardContent, StyledCard, RedArrowHover, GreenArrowHover,TypographyHover } from "./styled"
+import { StyledCardContent, StyledCard, RedArrowHover, GreenArrowHover, TypographyHover } from "./styled"
 
 export default function PostCard(props) {
 
@@ -26,6 +26,12 @@ export default function PostCard(props) {
     return (
         <StyledCard >
             <StyledCardContent onClick={props.onClick}>
+
+                <Typography variant="body2" component="p">
+                    {props.username}
+                </Typography>
+
+                <br/>
 
                 <Typography variant="h5" component="h2">
                     {props.title}

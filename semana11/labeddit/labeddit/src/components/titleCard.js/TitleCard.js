@@ -44,6 +44,10 @@ const TitleCard = (props) => {
 
             <CardContent>
 
+                <Typography variant="body2" component="p">
+                    {props.username}
+                </Typography>
+
                 <Typography variant="h5" component="h2">
                     {props.title}
                 </Typography>

@@ -3,7 +3,7 @@ import CardActions from '@material-ui/core/CardActions';
 import Typography from '@material-ui/core/Typography';
 import { ImArrowDown, ImArrowUp } from 'react-icons/im'
 import { voteCommentUp, voteCommentDown, deleteCommentVote } from '../../services/posts';
-import { StyledCard, RedArrowHover,GreenArrowHover } from "./styled"
+import { StyledCard, RedArrowHover, GreenArrowHover, VertDiv } from "./styled"
 
 const CommentCard = (props) => {
 
@@ -38,11 +38,16 @@ const CommentCard = (props) => {
                     <ImArrowDown onClick={() => voteDown(props.id)} />
                 </RedArrowHover>
 
+                <VertDiv>
+                    <Typography variant="body2" component="p">
+                        {props.username}
+                    </Typography>
 
-                <Typography variant="h6" component="h2">
-                    {props.body}
+                    <Typography variant="h6" component="h2">
+                        {props.body}
+                    </Typography>
+                </VertDiv>
 
-                </Typography>
             </CardActions>
         </StyledCard>
     );

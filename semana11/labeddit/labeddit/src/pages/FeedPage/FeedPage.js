@@ -31,6 +31,7 @@ const FeedPage = () => {
                     commentCount={post.commentCount}
                     voteSum={post.voteSum}
                     userVote={post.userVote}
+                    username={post.username}
                     onClick={() => onClickPost(post.id)}
                 />
             )
@@ -42,7 +43,7 @@ const FeedPage = () => {
 
             <CreactePostForm />
 
-            {postsList.length ? postsList : <CircularLoading/>}
+            {postsList.length ? postsList : <CircularLoading />}
         </FeedContainer>
     )
 }

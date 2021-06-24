@@ -25,10 +25,12 @@ const PostPage = () => {
                     voteSum={post.voteSum}
                     id={post.id}
                     userVote={post.userVote}
+                    username={post.username}
                 />
             )
         })
 
+        
     const postComments = useRequestData([], `${BASE_URL}/posts/${params.id}/comments`)
     const comments = postComments
         .sort((a, b) => { return Number(b.voteSum) - Number(a.voteSum) })
@@ -40,10 +42,11 @@ const PostPage = () => {
                     body={comment.body}
                     voteSum={comment.voteSum}
                     userVote={comment.userVote}
+                    username={comment.username}
                 />
             )
         })
-
+        console.log(postComments)
     return (
         <CommentsContainer>
 
