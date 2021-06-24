@@ -32,7 +32,7 @@ const PostPage = () => {
             )
         })
 
-    const postComments = useRequestData([], `${BASE_URL}/posts/${params.id}/comments`)
+    const postComments = useRequestData([], `${BASE_URL}/posts/${params.id}/comments/?size=100`)
     const comments = postComments
         .sort((a, b) => { return Number(b.voteSum) - Number(a.voteSum) })
         .map((comment) => {

@@ -1,7 +1,6 @@
 import React from 'react';
-import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
-import { StyledCard, RedArrowHover, GreenArrowHover } from "./styled"
+import { StyledCard, RedArrowHover, GreenArrowHover, StyledCardContent } from "./styled"
 import CardActions from '@material-ui/core/CardActions';
 import { votePostUp, votePostDown, deletePostVote } from '../../services/posts';
 import { ImArrowDown, ImArrowUp } from 'react-icons/im'
@@ -41,7 +40,7 @@ const TitleCard = (props) => {
                 </RedArrowHover>
             </CardActions>
 
-            <CardContent>
+            <StyledCardContent>
 
                 <Typography variant="body2" component="p">
                     {props.username}
@@ -54,7 +53,7 @@ const TitleCard = (props) => {
                 <Typography variant="body2" component="p">
                     {props.body}
                 </Typography>
-            </CardContent>
+            </StyledCardContent>
             
         </StyledCard>
     );

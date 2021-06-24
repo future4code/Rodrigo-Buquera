@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import useProtectedPage from '../../hooks/useProtectedPage'
 import PostCard from '../../components/postCard/PostCard'
 import useRequestData from "../../hooks/useRequestData"
@@ -11,10 +11,12 @@ import Typography from '@material-ui/core/Typography';
 import CircularLoading from '../../components/circularLoading/CircularLoading'
 import useForm from '../../hooks/useForm'
 import FilterForm from '../../components/filterForm/FilterForm'
+import PagesList from '../../components/pagesList/PagesList'
 
 const FeedPage = () => {
     useProtectedPage()
-    const posts = useRequestData([], `${BASE_URL}/posts`)
+    const [page, SetPage] = useState(1)
+    const posts = useRequestData([], `${BASE_URL}/posts/?page=${page}&size=50`)
     const [form, onChange, cleanFields] = useForm({ title: "", body: "" })
     const history = useHistory()
 
@@ -42,6 +44,10 @@ const FeedPage = () => {
             )
         })
 
+        if( (form.title !=="" || form.body !=="") && postsList.length === 0 ){
+
+        }
+
     return (
         <FeedContainer>
             <Typography variant="h5" component="h2"> Bem vindo(a) ao seu feed </Typography>
@@ -49,12 +55,22 @@ const FeedPage = () => {
             <CreactePostForm />
 
             <FilterForm
-            form={form}
-            onChange={onChange}
-            cleanFields={cleanFields}
+                form={form}
+                onChange={onChange}
+                cleanFields={cleanFields}
             />
 
-            {postsList.length ? postsList : <CircularLoading />}
+            <PagesList SetPage={SetPage} page={page} posts={posts}/>
+            
+            {postsList.length ? 
+            postsList 
+            : 
+            ((form.title !=="" || form.body !=="")  ?         
+            <Typography variant="h6" component="h2"> Nenhum resultado encontrado</Typography> 
+            :
+            <CircularLoading />
+             )}
+
         </FeedContainer>
     )
 }

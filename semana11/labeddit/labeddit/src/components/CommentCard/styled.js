@@ -17,6 +17,8 @@ export const GreenArrowHover = styled.div`
   }
 `
 export const VertDiv = styled.div`
+width: 80%;
 display:flex;
 flex-direction:column;
+word-wrap: break-word;
 `

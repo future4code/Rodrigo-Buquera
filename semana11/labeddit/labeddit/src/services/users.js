@@ -14,9 +14,11 @@ export const login = (body, cleanFields, history, setRightButtonText, setIsLoadi
         })
         .catch((err) => { 
             setIsLoading(false)
-            alert(err.response.data.message)
+            err.response.data.message ? 
+            alert("Email inválido ou senha muito curta")    
+            :
+            alert(err.response.data) 
         })
-
 }
 
 export const signUp = (body, cleanFields, history, setRightButtonText, setIsLoading) => {
@@ -31,7 +33,10 @@ export const signUp = (body, cleanFields, history, setRightButtonText, setIsLoad
         })
         .catch((err) => {
             setIsLoading(false) 
-            alert(err.response.data.message)
+            err.response.data.message ? 
+            alert("Email inválido ou senha muito curta")    
+            :
+            alert(err.response.data) 
         })
 
 }

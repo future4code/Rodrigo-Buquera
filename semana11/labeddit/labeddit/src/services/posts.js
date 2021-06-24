@@ -13,7 +13,7 @@ export const createPost = (body, cleanFields, setIsLoading) => {
         })
         .catch((err) => {
             setIsLoading(false)
-            alert(err.response.data.message)
+            alert(err.response.data)
         })
 }
 
@@ -27,7 +27,7 @@ export const createComment = (body, id, cleanFields, setIsLoading) => {
         })
         .catch((err) => {
             setIsLoading(false)
-            alert(err.response.data.message)
+            alert(err.response.data)
         })
 }
 
@@ -38,7 +38,7 @@ export const votePostUp = (id) => {
             window.location.reload()
         })
         .catch((err) => {
-            alert(err.response.data.message)
+            alert(err.response.data)
         })
 }
 
@@ -49,7 +49,7 @@ export const votePostDown = (id) => {
             window.location.reload()
         })
         .catch((err) => {
-            alert(err.response.data.message)
+            alert(err.response.data)
         })
 }
 
@@ -60,7 +60,7 @@ export const voteCommentUp = (id) => {
             window.location.reload()
         })
         .catch((err) => {
-            alert(err.response.data.message)
+            alert(err.response.data)
         })
 }
 
@@ -71,7 +71,7 @@ export const voteCommentDown = (id) => {
             window.location.reload()
         })
         .catch((err) => {
-            alert(err.response.data.message)
+            alert(err.response.data)
         })
 }
 
@@ -81,7 +81,7 @@ export const deletePostVote = (id) => {
             window.location.reload()
         })
         .catch((err) => {
-            alert(err.response.data.message)
+            alert(err.response.data)
         })
 }
 
@@ -91,6 +91,6 @@ export const deleteCommentVote = (id) => {
             window.location.reload()
         })
         .catch((err) => {
-            alert(err.response.data.message)
+            alert(err.response.data)
         })
 }
