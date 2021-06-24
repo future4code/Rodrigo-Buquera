@@ -4,6 +4,7 @@ import Typography from '@material-ui/core/Typography';
 import { ImArrowDown, ImArrowUp } from 'react-icons/im'
 import { votePostUp, votePostDown, deletePostVote } from '../../services/posts';
 import { StyledCardContent, StyledCard, RedArrowHover, GreenArrowHover, TypographyHover } from "./styled"
+import ShareButtons from '../../components/shareButtons/ShareButtons'
 
 export default function PostCard(props) {
 
@@ -26,25 +27,13 @@ export default function PostCard(props) {
     return (
         <StyledCard >
             <StyledCardContent onClick={props.onClick}>
+                <Typography variant="body2" component="p">{props.username} </Typography>
 
-                <Typography variant="body2" component="p">
-                    {props.username}
-                </Typography>
+                <Typography variant="h5" component="h2"> {props.title} </Typography>
 
-                <br/>
-
-                <Typography variant="h5" component="h2">
-                    {props.title}
-                </Typography>
-
-
-                <Typography variant="body2" component="p">
-                    {props.body}
-
-                </Typography>
-
+                <Typography variant="body2" component="p">{props.body} </Typography>
             </StyledCardContent>
-
+            <hr/>
             <CardActions>
                 <GreenArrowHover>
                     <ImArrowUp onClick={() => voteUp(props.id)} />
@@ -58,12 +47,13 @@ export default function PostCard(props) {
                     <ImArrowDown onClick={() => voteDown(props.id)} />
                 </RedArrowHover>
 
-
                 <TypographyHover variant="body2" component="p" onClick={props.onClick} >
                     {props.commentCount ? props.commentCount : "0"} Comentários
                 </TypographyHover>
 
-
+                <ShareButtons
+                    title={props.title}
+                />
             </CardActions>
         </StyledCard>
     );

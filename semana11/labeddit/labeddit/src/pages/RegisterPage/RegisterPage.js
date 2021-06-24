@@ -34,6 +34,7 @@ const RegisterPage = ({ setRightButtonText }) => {
                         required
                         placeholder="Nome"
                         pattern={"^.{3,}"}
+                        title={"O nome deve ter no mínimo 3 caracteres"}
                         size="30"
                     ></Input>
 

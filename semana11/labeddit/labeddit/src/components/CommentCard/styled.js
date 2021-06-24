@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import Card from '@material-ui/core/Card';
-import { secundaryColor } from '../../constants/colors';
 
 export const StyledCard = styled(Card)`
     width: 80%;

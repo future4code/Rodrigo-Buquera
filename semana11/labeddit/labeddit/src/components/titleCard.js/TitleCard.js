@@ -24,7 +24,6 @@ const TitleCard = (props) => {
         }
     }
 
-    console.log(props)
     return (
         <StyledCard >
 
@@ -54,10 +53,9 @@ const TitleCard = (props) => {
 
                 <Typography variant="body2" component="p">
                     {props.body}
-
                 </Typography>
             </CardContent>
-
+            
         </StyledCard>
     );
 }

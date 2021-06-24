@@ -9,6 +9,7 @@ import { CommentsContainer } from "./styled"
 import TitleCard from '../../components/titleCard.js/TitleCard'
 import Typography from '@material-ui/core/Typography';
 import CircularLoading from '../../components/circularLoading/CircularLoading'
+import ShareButtons from '../../components/shareButtons/ShareButtons'
 
 const PostPage = () => {
     useProtectedPage()
@@ -20,6 +21,7 @@ const PostPage = () => {
         .map((post) => {
             return (
                 <TitleCard
+                    key={post.id}
                     title={post.title}
                     body={post.body}
                     voteSum={post.voteSum}
@@ -30,7 +32,6 @@ const PostPage = () => {
             )
         })
 
-        
     const postComments = useRequestData([], `${BASE_URL}/posts/${params.id}/comments`)
     const comments = postComments
         .sort((a, b) => { return Number(b.voteSum) - Number(a.voteSum) })
@@ -46,11 +47,15 @@ const PostPage = () => {
                 />
             )
         })
-        console.log(postComments)
+    
     return (
         <CommentsContainer>
 
             {currentPost.length ? currentPost : <CircularLoading />}
+
+            <Typography variant="h6" component="h2"> Compartilhe este post:</Typography>
+
+            {currentPost.length ? <ShareButtons title={currentPost[0].props.title} /> : "" }
 
             <CreateCommentForm id={params.id} />
 
