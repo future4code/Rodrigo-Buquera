@@ -4,6 +4,7 @@ import Typography from '@material-ui/core/Typography';
 import { ImArrowDown, ImArrowUp } from 'react-icons/im'
 import { voteCommentUp, voteCommentDown, deleteCommentVote } from '../../services/posts';
 import { StyledCard, RedArrowHover, GreenArrowHover, VertDiv } from "./styled"
+import CorrectDate from '../correctDate/CorrectDate';
 
 const CommentCard = (props) => {
 
@@ -46,6 +47,8 @@ const CommentCard = (props) => {
                     <Typography variant="h6" component="h2">
                         {props.body}
                     </Typography>
+
+                    <CorrectDate createdAt={props.createdAt}/>
                 </VertDiv>
 
             </CardActions>

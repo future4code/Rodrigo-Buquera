@@ -39,6 +39,7 @@ const FeedPage = () => {
                     voteSum={post.voteSum}
                     userVote={post.userVote}
                     username={post.username}
+                    createdAt={post.createdAt}
                     onClick={() => onClickPost(post.id)}
                 />
             )

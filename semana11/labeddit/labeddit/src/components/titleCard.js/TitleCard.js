@@ -4,6 +4,7 @@ import { StyledCard, RedArrowHover, GreenArrowHover, StyledCardContent } from ".
 import CardActions from '@material-ui/core/CardActions';
 import { votePostUp, votePostDown, deletePostVote } from '../../services/posts';
 import { ImArrowDown, ImArrowUp } from 'react-icons/im'
+import CorrectDate from '../correctDate/CorrectDate';
 
 const TitleCard = (props) => {
 
@@ -25,7 +26,6 @@ const TitleCard = (props) => {
 
     return (
         <StyledCard >
-
             <CardActions>
                 <GreenArrowHover>
                     <ImArrowUp onClick={() => voteUp(props.id)} />
@@ -53,8 +53,9 @@ const TitleCard = (props) => {
                 <Typography variant="body2" component="p">
                     {props.body}
                 </Typography>
-            </StyledCardContent>
-            
+
+                <CorrectDate createdAt={props.createdAt}  />
+            </StyledCardContent>            
         </StyledCard>
     );
 }

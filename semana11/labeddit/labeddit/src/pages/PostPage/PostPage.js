@@ -15,7 +15,7 @@ const PostPage = () => {
     useProtectedPage()
     const params = useParams()
 
-    const posts = useRequestData([], `${BASE_URL}/posts`)
+    const posts = useRequestData([], `${BASE_URL}/posts/?size=100000000`)
     const currentPost = posts
         .filter(post => post.id === params.id)
         .map((post) => {
@@ -28,6 +28,8 @@ const PostPage = () => {
                     id={post.id}
                     userVote={post.userVote}
                     username={post.username}
+                    createdAt={post.createdAt}
+
                 />
             )
         })
@@ -44,6 +46,7 @@ const PostPage = () => {
                     voteSum={comment.voteSum}
                     userVote={comment.userVote}
                     username={comment.username}
+                    createdAt={comment.createdAt}
                 />
             )
         })

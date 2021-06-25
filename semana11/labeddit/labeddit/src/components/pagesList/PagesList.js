@@ -19,7 +19,6 @@ const PagesList = ({SetPage, page, posts}) => {
            { posts.length === 50 ? 
            <Button variant={"contained"} color={"primary"} onClick={()=>selectPage(1)}> Próxima página </Button> :
             "" }
-
           
         </FlexDiv>
     )

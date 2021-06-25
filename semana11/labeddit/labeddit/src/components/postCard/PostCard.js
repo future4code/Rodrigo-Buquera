@@ -5,6 +5,7 @@ import { ImArrowDown, ImArrowUp } from 'react-icons/im'
 import { votePostUp, votePostDown, deletePostVote } from '../../services/posts';
 import { StyledCardContent, StyledCard, RedArrowHover, GreenArrowHover, TypographyHover } from "./styled"
 import ShareButtons from '../../components/shareButtons/ShareButtons'
+import CorrectDate from '../correctDate/CorrectDate';
 
 export default function PostCard(props) {
 
@@ -24,6 +25,8 @@ export default function PostCard(props) {
         }
     }
 
+   
+
     return (
         <StyledCard >
             <StyledCardContent onClick={props.onClick}>
@@ -33,7 +36,7 @@ export default function PostCard(props) {
 
                 <Typography variant="body2" component="p">{props.body} </Typography>
             </StyledCardContent>
-            <hr/>
+            <hr />
             <CardActions>
                 <GreenArrowHover>
                     <ImArrowUp onClick={() => voteUp(props.id)} />
@@ -50,6 +53,8 @@ export default function PostCard(props) {
                 <TypographyHover variant="body2" component="p" onClick={props.onClick} >
                     {props.commentCount ? props.commentCount : "0"} Comentários
                 </TypographyHover>
+
+                <CorrectDate createdAt={props.createdAt} />
 
                 <ShareButtons
                     title={props.title}
