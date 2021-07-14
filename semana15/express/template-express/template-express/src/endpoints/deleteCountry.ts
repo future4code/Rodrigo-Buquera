@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { countries } from "../data"
+import { country } from "../types";
 
 export const deleteCountry = (
     req: Request,
@@ -26,14 +27,23 @@ export const deleteCountry = (
             country => country.id === Number(req.params.id)
         )
 
-        if (index === -1) {
-            res.statusCode = 404
-            throw new Error("Não encontrado")
+        if (!req.body){
+            res.statusCode = 400
+            throw new Error("insira um body")
+            // não ta rolando
         }
 
+        // const newCountry : country = 
+        
+        // newCountry.name = req.body.name,
 
-        countries.splice(index, 1)
-        res.status(204).end()
+        //     {
+        //         "name": req.body.name,
+        //         "capital": req.body.capital,
+        //         "continent": req.body.continent
+        // }
+             
+        
 
     } catch (error) {
         if (res.statusCode === 200) {
