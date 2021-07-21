@@ -1,0 +1,44 @@
+GET http://localhost:3003/users/001
+
+### 
+
+GET http://localhost:3003/users/
+
+
+###
+
+# GET http://localhost:3003/users?gender=female
+
+
+###
+
+PUT http://localhost:3003/users/001
+Content-Type: application/json
+
+{
+    "salary": 10 
+}
+
+###
+DELETE  http://localhost:3003/users/011
+Content-Type: application/json
+
+###
+GET  http://localhost:3003/users?gender=female
+
+
+###
+GET  http://localhost:3003/actor/001
+
+###
+GET  http://localhost:3003/actor?gender=female
+
+###
+
+POST http://localhost:3003/actor
+Content-Type: application/json
+
+{
+    "id": 001,
+    "salary": 1000 
+}
