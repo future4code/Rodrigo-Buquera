@@ -1,0 +1,67 @@
+###
+// cria user
+POST http://localhost:3003/user
+Content-Type: application/json
+
+{
+  "name": "Louize  ",
+  "nickname": "Lou",
+  "email": "lou@email.com"
+}
+
+###
+// get user por id
+GET http://localhost:3003/user/1626979159785
+
+###
+// edita user
+PUT http://localhost:3003/user/edit/1626979159785
+Content-Type: application/json
+
+{
+  "name": "Rodrigo BB",
+  "nickname": "RBB"
+}
+
+###
+//cria task
+POST http://localhost:3003/task
+Content-Type: application/json
+
+{
+	"title": " Fazer o almoço ",
+	"description": "comer",
+	"limit_date": "04/05/2021",
+	"requesting_user": "1626979159785"
+}
+
+###
+/// task por id
+GET http://localhost:3003/task/1627042280048
+
+###
+/// pega todos usuários
+GET http://localhost:3003/user/all
+
+###
+// tasks por user
+GET http://localhost:3003/task?creatorUserId=1626979159785
+
+###
+
+// get user
+GET http://localhost:3003/user?query=l
+
+### add resṕonsavel 
+POST http://localhost:3003/task/responsible
+Content-Type: application/json
+
+{
+	"task_id": "1627049331427",
+	"responsible_user_id": "1626979708619"
+}
+### responsaveis pela tarefa
+
+GET http://localhost:3003/task/1627042280048/responsible
+
+### 
