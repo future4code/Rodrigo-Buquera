@@ -1,0 +1,19 @@
+### Pega todos usuários - ex1a
+
+GET http://localhost:3003/users?name=jo
+
+### Pega usuários por type - ex1b
+
+GET http://localhost:3003/users/
+
+### Pega usuários ordenados - ex2
+
+GET http://localhost:3003/users?sort=type&order=DESC
+
+### Pega usuários por page - ex3
+
+GET http://localhost:3003/users?page=4
+
+### Pega usuários com todos filtros - ex4
+
+GET http://localhost:3003/users?type=cx
