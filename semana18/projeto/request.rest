@@ -1,0 +1,26 @@
+###
+POST http://localhost:3003/users
+Content-Type: application/json 
+
+{
+    "name": "Carol", 
+    "email": "c@rol.com", 
+    "age": 35
+}
+
+###
+POST http://localhost:3003/products
+Content-Type: application/json 
+
+{
+    "name": "desuntupidor de mentes", 
+    "description": "para aqueles que só pensam merda", 
+    "price": 1000
+}
+
+###
+GET http://localhost:3003/users
+
+###
+GET http://localhost:3003/products
+
