@@ -1,5 +1,3 @@
-import { Product } from "./Product";
-import { User } from "./User";
 
 export class Purchase {
     constructor(
@@ -8,12 +6,19 @@ export class Purchase {
         private productId: string,
         public quantity: number,
         public totalValue: number  
-    ) {
-       
+    ) {     }
+
+    public getID(): string {
+        return this.id
     }
 
+    public getUserID(): string {
+        return this.userId
+    }
+
+    public getProductID(): string {
+        return this.productId
+    }
     
-
-
 }
 

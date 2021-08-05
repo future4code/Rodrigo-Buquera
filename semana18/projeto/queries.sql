@@ -16,8 +16,7 @@ id VARCHAR(50) NOT NULL PRIMARY KEY,
 name VARCHAR(100) NOT NULL,
 description VARCHAR(250) NOT NULL,
 price FLOAT NOT NULL,
-ticket BOOLEAN,
-ticket_id VARCHAR(50),
+ticket_id VARCHAR(50), 
 FOREIGN KEY (ticket_id) REFERENCES labecom_back_tickets(id)
 );
 
@@ -30,3 +29,8 @@ total_value FLOAT NOT NULL,
 FOREIGN KEY (user_id) REFERENCES labecom_back_users(id),
 FOREIGN KEY (product_id) REFERENCES labecom_back_products(id)
 );
+
+DROP TABLE labecom_back_purchase;
+DROP TABLE labecom_back_products;
+DROP TABLE labecom_back_tickets;
+DROP TABLE labecom_back_users;

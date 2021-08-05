@@ -21,6 +21,12 @@ export class BadRequest extends CustomError{
 
 export class InvalidEmail extends CustomError{
     constructor() {
-        super("Email inválido", 400);
+        super("Email inválido", 406);
+    }
+}
+
+export class InvalidDate extends CustomError{
+    constructor() {
+        super("Data inválida, uso o formatao dd/mm/aaa", 406);
     }
 }

@@ -2,7 +2,7 @@ import { Request, Response } from "express"
 import { ProductDataBase } from "../data/ProductDataBase"
 import { Product } from "../entities/Product"
 
-import { BadRequest, InvalidEmail } from "../error/customError"
+import { BadRequest } from "../error/customError"
 
 export const createProduct = async (req: Request, res: Response) => {
 
@@ -15,9 +15,9 @@ export const createProduct = async (req: Request, res: Response) => {
 
         const id = (Date.now() * Math.random()).toString()
 
-        const product = new Product(id, name, description, price )
+        const product = new Product(id, name, description, price)
 
-        new ProductDataBase().addProduct(product)
+        await new ProductDataBase().addProduct(product)
 
         res.status(200).send({message:"produto criado com sucesso"})
 

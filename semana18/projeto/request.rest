@@ -13,14 +13,46 @@ POST http://localhost:3003/products
 Content-Type: application/json 
 
 {
-    "name": "desuntupidor de mentes", 
-    "description": "para aqueles que só pensam merda", 
-    "price": 1000
+    "name": "batata", 
+    "description": "batata", 
+    "price": 1
 }
 
 ###
 GET http://localhost:3003/users
 
 ###
-GET http://localhost:3003/products
+GET http://localhost:3003/products?order=DESC
+
+###
+POST http://localhost:3003/tickets
+Content-Type: application/json 
+
+{
+    "name": "brasil-italia", 
+    "description": "bom dia brasil, boa tarde italia", 
+    "price": 1730.55,
+    "origin": "GRU",
+    "destiny": " italia "
+}
+
+###
+GET http://localhost:3003/tickets
+
+###
+POST http://localhost:3003/purchase
+Content-Type: application/json 
+
+{
+    "userId": "155903901102.62476", 
+    "productId": "1000480731144.9236", 
+    "quantity": 2
+    
+}
+
+###
+GET http://localhost:3003/purchase
+
+###
+GET http://localhost:3003/purchase/155903901102.62476
 

@@ -1,9 +1,14 @@
 export class Product {
     constructor(
-        protected id: string,
+        private id: string,
         public name: string,
         public description: string,
         public price: number,
+        public ticketID?:string
     ) { }
+
+    public getID(): string {
+        return this.id
+    }
 
 }
