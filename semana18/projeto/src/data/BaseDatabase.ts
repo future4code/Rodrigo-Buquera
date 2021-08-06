@@ -15,5 +15,4 @@ export class BaseDatabase {
        multipleStatements: true
     }
  })
-
 }

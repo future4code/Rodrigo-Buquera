@@ -44,8 +44,8 @@ POST http://localhost:3003/purchase
 Content-Type: application/json 
 
 {
-    "userId": "155903901102.62476", 
-    "productId": "1000480731144.9236", 
+    "userId": "279285617213.82623", 
+    "productId": "1599197305936.1606", 
     "quantity": 2
     
 }
