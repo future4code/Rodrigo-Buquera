@@ -19,6 +19,8 @@ export function generateToken(
    )
 }
 
+
+
 export function getTokenData(
    token: string
 ): AuthenticationData {
