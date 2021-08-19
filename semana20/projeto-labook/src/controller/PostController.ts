@@ -38,5 +38,4 @@ export class PostController {
             res.status(404).send(error.message || error.sqlMessage)
         }
     }
-
 }
