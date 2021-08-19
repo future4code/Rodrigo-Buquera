@@ -1,5 +1,5 @@
 import { UserDatabase } from "../data/UserDatabase";
-import { InvalidCredentials, InvalidRequest } from "../error/customError";
+import { CustomError, InvalidCredentials, InvalidRequest } from "../error/customError";
 
 import { User, userDataDTO, userLoginDTO } from "../model/User";
 import { generateToken } from "../services/Authenticator";
@@ -12,15 +12,16 @@ export class UserBusiness {
 
     public async signup(userData: userDataDTO): Promise<string> {
         try {
+            console.log(userData)
             const { name, email, password } = userData
-
+          
             if (!name || !email || !password) {
-
                 throw new InvalidRequest
             }
 
             const id = generateId()
             const cypherPassword = await generateHash(password);
+
 
             const user = new User(id, name, email, cypherPassword)
             await userDatabase.create(user)

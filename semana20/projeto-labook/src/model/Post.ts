@@ -48,4 +48,5 @@ export type postDataDTO = {
 
 export type postIdDTO = {
     id: string,
+    token: string
 }

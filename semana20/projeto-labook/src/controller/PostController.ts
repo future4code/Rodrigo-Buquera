@@ -1,10 +1,10 @@
 import { Request, Response } from "express"
 import { PostBusiness } from "../business/PostBusiness"
-import { postDataDTO } from "../model/Post"
+import { postDataDTO, postIdDTO } from "../model/Post"
 
 const postBusiness = new PostBusiness()
 
-export class UserController {
+export class PostController {
 
     public async createPost(req: Request, res: Response): Promise<void> {
         try {
@@ -20,19 +20,22 @@ export class UserController {
 
             res.status(201).send({ message: "Post criado com sucesso" })
         } catch (error) {
-            throw new Error(error.message);
+            res.status(404).send(error.message || error.sqlMessage)
         }
     }
 
     public async findById(req: Request, res: Response): Promise<void> {
         try {
-            const id = { id: req.params.id }
-
-            const post = await postBusiness.findById(id)
+            const input :postIdDTO = { 
+                id: req.params.id, 
+                token: req.headers.authorization!
+            }
+           
+            const post = await postBusiness.findById(input)
 
             res.status(201).send({ post })
         } catch (error) {
-            throw new Error(error.message);
+            res.status(404).send(error.message || error.sqlMessage)
         }
     }
 

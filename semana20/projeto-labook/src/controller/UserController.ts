@@ -19,7 +19,7 @@ export class UserController {
 
             res.status(201).send({ message: "Usuário criado com sucesso", token })
         } catch (error) {
-            throw new Error(error.message);
+            res.status(404).send(error.message || error.sqlMessage)
         }
     }
 
@@ -29,12 +29,12 @@ export class UserController {
                 email: req.body.email,
                 password: req.body.password
             }
-     
+
             const token = await userBusiness.login(input)
 
             res.status(201).send({ token })
         } catch (error) {
-            throw new Error(error.message);
+            res.status(404).send(error.message || error.sqlMessage)
         }
     }
 

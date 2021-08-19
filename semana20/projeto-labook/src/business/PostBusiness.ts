@@ -1,6 +1,6 @@
 import moment from "moment";
 import { PostDatabase } from "../data/PostDatabase";
-import { InvalidRequest, NotFoundError } from "../error/customError";
+import { InvalidRequest, NotFoundError, Unauthorized } from "../error/customError";
 import { authenticationData } from "../model/AuthenticationData";
 import { Post, postDataDTO, postIdDTO } from "../model/Post";
 import { getTokenData } from "../services/Authenticator";
@@ -14,13 +14,15 @@ export class PostBusiness {
         try {
             const { photo, description, type, token } = postData
 
+            const tokenData: authenticationData = getTokenData(token)
+
             if (!photo || !description || !type || !token) {
                 throw new InvalidRequest
             }
 
-            const createdAt = new Date() // vai dar ruim
-            const tokenData: authenticationData = getTokenData(token)
-            // validação?
+            const createdAt = new Date()
+            
+          
             const id: string = generateId()
             const post = new Post(photo, id, description, type, createdAt, tokenData.id)
 
@@ -34,10 +36,12 @@ export class PostBusiness {
 
     public async findById(postId: postIdDTO): Promise<Post> {
         try {
-            const { id } = postId
+            const { id, token } = postId
+
+            const tokenData: authenticationData = getTokenData(token)
 
             if (!id) {
-                throw new NotFoundError
+                throw new InvalidRequest
             }
 
             const post = await postDatabase.findById(id)

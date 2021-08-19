@@ -1,0 +1,33 @@
+###
+POST http://localhost:3003/users/signup
+Content-Type: application/json
+
+{
+   "name": "carlos",
+   "email": "carlos@teste.com",
+   "password": "123456"
+}
+
+###
+POST http://localhost:3003/users/login
+Content-Type: application/json
+
+{
+   "name": "Mariana",
+   "email": "mariana@teste.com",
+   "password": "123456"
+}
+
+###
+POST http://localhost:3003/posts/create
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ik1hcmlhbmEiLCJpYXQiOjE2MjkzOTIzODQsImV4cCI6MTYyOTM5MjM4NH0.sdXSTGKwGuRoIn5WTHLMs9Ik17YhllkdKzLc7RV2hUc
+
+{
+   "photo": "https://picsum.photos/200/300",
+   "description": "lorem picsum",
+   "type": "normal"
+}
+###
+GET http://localhost:3003/posts/:5d936f94-408b-40ae-bcf7-cdf98bab9f48
+
