@@ -1,7 +1,7 @@
 export class CustomError extends Error {
     constructor(
         message: any,
-        protected statusCode: number = 400
+        public statusCode: number = 400
     ) {
         super(message)
     }
@@ -9,13 +9,13 @@ export class CustomError extends Error {
 
 export class NotFoundError extends CustomError {
     constructor() {
-        super("Não encontrado", 404);
+        super("Item não encontrado", 404);
     }
 }
 
 export class InvalidRequest extends CustomError{
     constructor() {
-        super("Preencha corretamente os campos ", 400);
+        super("Preencha corretamente os campos da requisição", 400);
     }
 }
 

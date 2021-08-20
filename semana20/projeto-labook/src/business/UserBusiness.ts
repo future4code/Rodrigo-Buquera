@@ -12,7 +12,7 @@ export class UserBusiness {
 
     public async signup(userData: userDataDTO): Promise<string> {
         try {
-            console.log(userData)
+
             const { name, email, password } = userData
           
             if (!name || !email || !password) {
@@ -29,7 +29,7 @@ export class UserBusiness {
 
             return token
         } catch (error) {
-            throw new Error(error.message);
+            throw new CustomError(error.sqlMessage || error.message, error.statusCode || 400)
         }
     }
 
@@ -52,7 +52,7 @@ export class UserBusiness {
 
             return token
         } catch (error) {
-            throw new Error(error.message);
+            throw new CustomError(error.sqlMessage || error.message, error.statusCode || 400)
         }
     }
 }

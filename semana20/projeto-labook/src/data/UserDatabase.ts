@@ -1,4 +1,4 @@
-import { NotFoundError } from "../error/customError";
+import { CustomError, NotFoundError } from "../error/customError";
 import { User } from "../model/User";
 import { BaseDatabase } from "./BaseDataBase";
 
@@ -10,13 +10,13 @@ export class UserDatabase extends BaseDatabase {
         try {
             await BaseDatabase.connection(TABLE_NAME)
                 .insert({
-                    id: user.getName(),
+                    id: user.getID(),
                     name: user.getName(),
                     email: user.getEmail(),
                     password: user.getPassword()
                 })
         } catch (error) {
-            throw new Error(error.sqlMessage || error.message);
+            throw new CustomError(error.sqlMessage || error.message, error.statusCode || 400)
         }
     }
 
@@ -34,7 +34,7 @@ export class UserDatabase extends BaseDatabase {
 
             return user
         } catch (error) {
-            throw new Error(error.sqlMessage || error.message);
+            throw new CustomError(error.sqlMessage || error.message, error.statusCode || 400)
         }
     }
 

@@ -19,7 +19,7 @@ export class UserController {
 
             res.status(201).send({ message: "Usuário criado com sucesso", token })
         } catch (error) {
-            res.status(404).send(error.message || error.sqlMessage)
+            res.status(error.statusCode || 400).send(error.message || error.sqlMessage) 
         }
     }
 
@@ -34,7 +34,7 @@ export class UserController {
 
             res.status(201).send({ token })
         } catch (error) {
-            res.status(404).send(error.message || error.sqlMessage)
+            res.status(error.statusCode || 400).send(error.message || error.sqlMessage) 
         }
     }
 

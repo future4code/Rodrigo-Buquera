@@ -20,7 +20,7 @@ export class PostController {
 
             res.status(201).send({ message: "Post criado com sucesso" })
         } catch (error) {
-            res.status(404).send(error.message || error.sqlMessage)
+            res.status(error.statusCode || 400).send(error.message || error.sqlMessage) 
         }
     }
 
@@ -35,7 +35,7 @@ export class PostController {
 
             res.status(201).send({ post })
         } catch (error) {
-            res.status(404).send(error.message || error.sqlMessage)
+            res.status(error.statusCode || 400).send(error.message || error.sqlMessage) 
         }
     }
 }

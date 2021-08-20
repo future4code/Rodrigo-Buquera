@@ -1,6 +1,6 @@
 import moment from "moment";
 import { PostDatabase } from "../data/PostDatabase";
-import { InvalidRequest, NotFoundError, Unauthorized } from "../error/customError";
+import { CustomError, InvalidRequest, NotFoundError, Unauthorized } from "../error/customError";
 import { authenticationData } from "../model/AuthenticationData";
 import { Post, postDataDTO, postIdDTO } from "../model/Post";
 import { getTokenData } from "../services/Authenticator";
@@ -30,7 +30,7 @@ export class PostBusiness {
 
 
         } catch (error) {
-            throw new Error(error.message);
+            throw new CustomError(error.sqlMessage || error.message, error.statusCode || 400)
         }
     }
 
@@ -48,7 +48,7 @@ export class PostBusiness {
 
             return post
         } catch (error) {
-            throw new Error(error.message);
+            throw new CustomError(error.sqlMessage || error.message, error.statusCode || 400)
         }
     }
 }

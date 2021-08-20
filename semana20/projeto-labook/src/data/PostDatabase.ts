@@ -1,4 +1,4 @@
-import { NotFoundError } from "../error/customError";
+import { CustomError, NotFoundError } from "../error/customError";
 import { Post } from "../model/Post";
 import { BaseDatabase } from "./BaseDataBase";
 
@@ -18,7 +18,7 @@ export class PostDatabase extends BaseDatabase {
                 author_id: post.getAuthorID()
              })
         } catch (error) {
-            throw new Error(error.sqlMessage || error.message);
+            throw new CustomError(error.sqlMessage || error.message, error.statusCode || 400)
         }
     }
 
@@ -36,7 +36,7 @@ export class PostDatabase extends BaseDatabase {
 
             return user
         } catch (error) {
-            throw new Error(error.sqlMessage || error.message);
+            throw new CustomError(error.sqlMessage || error.message, error.statusCode || 400)
         }
     }
 
