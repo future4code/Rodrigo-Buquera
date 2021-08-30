@@ -1,0 +1,50 @@
+###
+POST http://localhost:3003/users/signup
+Content-Type: application/json
+
+{
+   "name": "Ronaldo",
+   "email": "rol@teste.com",
+   "password": "123456"
+}
+
+###
+POST http://localhost:3003/users/login
+Content-Type: application/json
+
+{
+   "name": "Ronaldo",
+   "email": "rol@teste.com",
+   "password": "123456"
+}
+
+###
+POST http://localhost:3003/posts/create
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ik1hcmlhbmEiLCJpYXQiOjE2Mjk0NjAxNDksImV4cCI6MTYyOTQ2MDc0OX0.oiiko7uIG69ICGGB6NDI2TCT1aqgkb-wnjzVd0NkduE
+
+{
+   "photo": "https://picsum.photos/200/300",
+   "description": "lorem picsum",
+   "type": "normal"
+}
+###
+GET http://localhost:3003/posts/5d936f94-408b-40ae-bcf7-cdf98bab9f48
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ik1hcmlhbmEiLCJpYXQiOjE2Mjk0NjAxNDksImV4cCI6MTYyOTQ2MDc0OX0.oiiko7uIG69ICGGB6NDI2TCT1aqgkb-wnjzVd0NkduE
+
+###
+POST http://localhost:3003/relations
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjhjOGQzOTVlLWVkNjgtNGQ5OS1iNDhjLTFmMGViOWQ2MjEyNSIsImlhdCI6MTYyOTQ2Nzc1MiwiZXhwIjoxNjI5NDY4MzUyfQ.VNlFooDT7IiJv2c-aTqv1tgtrwGAPYhh4zzTe2KJhBs
+
+{
+"friendId": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjhjOGQzOTVlLWVkNjgtNGQ5OS1iNDhjLTFmMGViOWQ2MjEyNSIsImlhdCI6MTYyOTQ2Nzc1MiwiZXhwIjoxNjI5NDY4MzUyfQ.VNlFooDT7IiJv2c-aTqv1tgtrwGAPYhh4zzTe2KJhBs"
+}
+###
+DELETE http://localhost:3003/relations
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjhjOGQzOTVlLWVkNjgtNGQ5OS1iNDhjLTFmMGViOWQ2MjEyNSIsImlhdCI6MTYyOTQ2ODMyMiwiZXhwIjoxNjI5NDY4OTIyfQ.w20ywicBsDUmKHT20CwBnee192XdCXCQbDlY_-2N8B0
+
+{
+"friendId": "Mariana"
+}
